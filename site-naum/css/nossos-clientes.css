@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-padding-top: 7vh;
+    scroll-behavior: smooth;
+    width: 100vw;
+}
+
+.select-disable {
+    user-select: none;
+}
+
+nav {
+    background: #000000B0;
+    height: 113px;
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    transition: 0.5s;
+    list-style-type: none;
+}
+
+.navbar-options {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 28.13px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.navbar-options li a {
+    list-style-type: none;
+    display: inline-block;
+    background-image: linear-gradient(to right, #FFB800, #FFD600 50%, #FFF 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    font-weight: 500;
+    padding: 5px 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.navbar-options li a:hover {
+    background-position: 0;
+}
+
+body {
+    width: 100vw;
+    height: auto;
+    color: #FFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    background-image: url(../assets/imgs/fundo-ambientado-de-barbearia-escuro.png);
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #00000055;
+}
+
+body::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #747483 30%, #b4b5c4 70%);
+}
+
+a {
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.logoN {
+    font-family: 'Black Ops One', sans-serif;
+    /* Corrigido o nome da fonte */
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.section-title {
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 900;
+    background: conic-gradient(from 222.76deg at 48.5% 50%, #FFB800 -50.04deg, #F6B714 51.17deg, #C3801C 93.96deg, #FFD600 141.07deg, #C38100 185.72deg, #E5B300 259.56deg, #FFB800 309.96deg, #F6B714 411.17deg);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 56.25px;
+    text-align: center;
+    list-style-type: none;
+}
+
+#parceiros {
+
+    display: flex;
+    /* Removido o flex-direction: column */
+    justify-content: center;
+    /* Alterado para center */
+    width: 100%;
+    background-size: cover;
+    flex-wrap: wrap;
+    background-position: center;
+    min-height: 100vh;
+    /* Alterado para min-height */
+}
+
+.ver-filto {
+    display: flex;
+    flex-direction: column;
+    align-items: wrap;
+    margin-left: 120px;
+    margin-top: 150px;
+
+
+}
+
+.select-estrel {
+    width: 200px;
+    /* Ajuste a largura do select conforme necessário */
+}
+
+
+.select-estrel {
+    width: 10%;
+    border: 1px #001a2441 solid;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #e7fbff;
+    color: #001a24;
+    font-size: 15px;
+    box-shadow: 0px 2px 0px 0px #00000056;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.cards-parceiros {
+    display: flex;
+    flex-wrap: wrap;
+    /* Adicionado para quebrar em várias linhas */
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    padding: 45px 0;
+}
+
+.parceiros-info {
+    border: 1px solid rgba(255, 184, 0, 1);
+    box-shadow: 15px 4px 15px 0px rgba(143, 143, 143, 0.21);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 364px;
+    height: 230px;
+    background-color: rgba(0, 0, 0, 1);
+    transition: 0.6s !important;
+    overflow: hidden;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+    background: #181818;
+
+}
+
+.container-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 50vh;
+    gap: 10vw;
+    padding: 1rem 4rem;
+}
+
+.container-content img {
+    align-self: flex-start;
+    max-width: 160px;
+    width: auto;
+    height: auto;
+}
+
+.footer-content ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    width: 33%;
+    height: 100%;
+    font-size: 15px;
+    font-weight: 500;
+    list-style-type: none;
+}
+
+.footer-content ul li,
+.footer-content ul li a {
+    color: #FFF;
+    cursor: pointer;
+}
+
+.footer-content ul li:first-of-type {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    -webkit-text-stroke-width: .6px;
+    -webkit-text-stroke-color: #FFF;
+    margin-bottom: 10px;
+}
+
+
+@media (max-width: 1024px) {
+    .cards-parceiros {
+        flex-direction: column;
+    }
+
+    .parceiros-info {
+        width: 90%;
+    }
+
+    .container-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 2rem;
+    }
+
+    .footer-content ul,
+    .copy ul {
+        width: 100%;
+        text-align: center;
+    }
+
+    .redes-sociais ul {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-parceiros {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .parceiros-info {
+        width: 90%;
+        height: auto;
+    }
+
+    .container-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 2rem;
+        gap: 2rem;
+    }
+
+    .footer-content ul,
+    .copy ul {
+        width: 100%;
+        text-align: center;
+    }
+
+    .redes-sociais ul {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 1rem;
+    }
+
+    .navbar-options {
+        gap: 1.5rem;
+        font-size: 18px;
+    }
+
+    .section-title {
+        font-size: 36px;
+        line-height: 42.19px;
+    }
+
+    .parceiros-info {
+        width: 100%;
+    }
+
+    .container-content {
+        padding: 2rem 1rem;
+    }
+
+    .footer-content ul,
+    .copy ul {
+        width: 100%;
+        text-align: center;
+    }
+
+    .redes-sociais ul {
+        width: 100%;
+    }
+}
