@@ -6,34 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="./css/editarLogin.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/geral.css">
 </head>
 
 <body>
-    
-        <nav id="Nav">
-            <div>
-                <div href="#" class="logoN">NAUM</div>
-            </div>
-            <ul class="navbar-options">
-                <li><a href="#SobreNos">Sobre</a></li>
-                <li><a href="#Funcionaliaddes">Funcionalidades</a></li>
-                <li><a href="#parceiros">Parceiros</a></li>
-                <li><a href="#NosContatar">Contato</a></li>
-            </ul>
-        </nav>
 
-    <div class="banner">
-        <div class="validarconta"><br>
-            <h1> LOGIN</h1>
-            EMAIL <input id="input_email" placeholder="EMAIL"><br>
-            SENHA <input id="input_senha" placeholder="SENHA" type="password"><br>
-            CONFIRMAR SENHA <input id="input_senha" placeholder="CONFIRMAR SENHA" type="password"><br>
-            <button onclick="entrar()">ALTERAR SENHA </button>
+    <div class="borda-gradiente-left">
+        <div class="borda-gradiente-right">
+            <nav id="Nav">
+                <div>
+                    <a href="./index.html" class="logoN">NAUM</a>
+                </div>
+                <ul class="navbar-options">
+                    <li><a href="./index.html#SobreNos">Sobre</a></li>
+                    <li><a href="./index.html#Funcionaliaddes">Funcionalidades</a></li>
+                    <li><a href="./index.html#parceiros">Parceiros</a></li>
+                    <li><a href="./index.html#NosContatar">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="banner">
+                <div class="validarconta"><br>
+                    <h1> LOGIN</h1>
+                    EMAIL <input id="input_email" placeholder="EMAIL"><br>
+                    SENHA <input id="input_senha" placeholder="SENHA" type="password"><br>
+                    CONFIRMAR SENHA <input id="input_senha" placeholder="CONFIRMAR SENHA" type="password"><br>
+                    <button onclick="entrar()">ALTERAR</button>
+                </div>
+                <div id="pg_login"></div>
+            </div>
         </div>
-        <div id="pg_login"></div>
     </div>
 
 </body>
+
 </html>
 <script src="js/login.js"></script>

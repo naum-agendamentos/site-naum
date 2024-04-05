@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="./assets/logos/NAUM.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/geral.css">
     <link rel="stylesheet" href="./js/login.js">
     <title>Site Institucional - NAUM.</title>
 </head>
@@ -16,7 +17,7 @@
         <header>
             <nav id="Nav">
                 <div>
-                    <div href="#" class="logoN">NAUM</div>
+                    <a href="./index.html" class="logoN">NAUM</a>
                 </div>
                 <ul class="navbar-options">
                     <li><a href="#SobreNos">Sobre</a></li>
@@ -111,53 +112,56 @@
                 </div>
             </div>
         </section>
-        <section id="parceiros">
-            <h1 class="section-title" element-anime="center">CONFIRA NOSSOS PARCEIROS DE
-                <br>SUCESSO
-            </h1>
-            <ul class="ver-mais">
-                <li><a href="#verMais" element-anime="center">VER TODOS</a></li>
-            </ul>
+        <div class="borda-gradiente-left">
+            <div class="borda-gradiente-right">
+                <section id="parceiros">
+                    <h1 class="section-title" element-anime="center">CONFIRA NOSSOS PARCEIROS DE
+                        <br>SUCESSO
+                    </h1>
+                    <ul class="ver-mais">
+                        <li><a href="./nossos-clientes.html" element-anime="center">VER TODOS</a></li>
+                    </ul>
 
-            <div class="cards-parceiros">
-                <div element-anime="bottomLeft-to-topRight" class="parceiros-info" style="transition: 1.3s;">
-                    <div>
-                        <img src="./assets/imgs/imagemParceiro.png" alt="sino">
+                    <div class="cards-parceiros">
+                        <div element-anime="bottomLeft-to-topRight" class="parceiros-info" style="transition: 1.3s;">
+                            <div>
+                                <img src="./assets/imgs/imagemParceiro.png" alt="sino">
+                            </div>
+
+                        </div>
+                        <div element-anime="bottomLeft-to-topRight" class="parceiros-info" style="transition: 1.9s;">
+                            <div>
+                                <img src="./assets/imgs/imagemParceiro.png" alt="sino">
+                            </div>
+                        </div>
+
+                        <div element-anime="bottomLeft-to-topRight" class="parceiros-info" style="transition: 2.5s;">
+                            <div>
+                                <img src="./assets/imgs/imagemParceiro.png" alt="sino">
+                            </div>
+                        </div>
+
                     </div>
+                </section>
+                <section id="contratar">
 
-                </div>
-                <div element-anime="bottomLeft-to-topRight" class="parceiros-info" style="transition: 1.9s;">
-                    <div>
-                        <img src="./assets/imgs/imagemParceiro.png" alt="sino">
+                    <div class="card-contratar" id="NosContatar">
+                        <div element-anime="bottomLeft-to-topRight" class="contratar-info" style="transition: 1.3s;">
+                            <div>
+                                <img src="./assets/imgs/contratar.png" alt="sino">
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <h1 class="contratar-title" element-anime="center">DESEJA SER UM BARBEIRO DE
+                        <br><span>SUCESSO?</span>
+                    </h1>
 
-                <div element-anime="bottomLeft-to-topRight" class="parceiros-info" style="transition: 2.5s;">
                     <div>
-                        <img src="./assets/imgs/imagemParceiro.png" alt="sino">
+                        <a href="#" element-anime="center">CONTRATAR AGORA</a>
                     </div>
-                </div>
-
+                </section>
             </div>
-        </section>
-        <section id="contratar">
-
-            <div class="card-contratar" id="NosContatar">
-                <div element-anime="bottomLeft-to-topRight" class="contratar-info" style="transition: 1.3s;">
-                    <div>
-                        <img src="./assets/imgs/contratar.png" alt="sino">
-                    </div>
-                </div>
-            </div>
-            <h1 class="contratar-title" element-anime="center">DESEJA SER UM BARBEIRO DE
-                <br><span>SUCESSO?</span>
-            </h1>
-
-            <div>
-                <a href="#" element-anime="center">CONTRATAR AGORA</a>
-            </div>
-
-        </section>
+        </div>
         <footer id="Footer">
             <hr>
             <div class="container-content">
@@ -175,7 +179,7 @@
                         <li>Dúvidas Gerais</li>
                         <li>Competências Gerais</li>
                         <li>Sugestões</li>
-                        <li>contato@naum.com</li>
+                        <li><a href="./login.html">Login</a></li>
                     </ul>
                     <ul>
                         <li></li>
@@ -200,9 +204,7 @@
 
                 <a href="#"> <img class="select-disable" src="./assets/imgs/arrow-climb-up.png" alt="Seta para subir">
                 </a>
-                
             </div>
-
         </footer>
     </main>
 </body>
