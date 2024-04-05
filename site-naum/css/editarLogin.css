@@ -130,6 +130,7 @@ input {
 }
 
 button {
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,52 +138,20 @@ button {
     padding: 16px 24px;
     gap: 10px;
     font-size: 20px;
-    width: 142px;
+    width: 222px;
     height: 38px;
     left: 280px;
     top: 200px;
-/*color: conic-gradient(from -90deg at 51.5% 39.29%, #c3c3c3 -26.32deg, #fdfdfd 38.84deg, #b2b2b2 229.4deg, #c3c3c3 333.68deg, #fdfdfd 39338.84deg);*/
+
     background: linear-gradient(90deg, #D39904 8%, #A47600 29%, #8C5C00 48%, #D18A00 69%, #E49600 85%, #F2CC00 100%);
     border-radius: 7px;
-color: white;
-}
-.alterarSenha {
-    display: flex;
-    padding: 16px 24px;
-    gap: 10px;
-    font-size: 10px;
-    width: 182px;
-    height: 38px;
-    left: 280px;
-    top: 200px;
-}
-.alterarSenha {
-    margin-top:  10px;
-    margin-bottom: 10px;
-    background: transparent;
-    border-radius: 7px;
-    font-size: 10px;
-    width: 140px;
-    padding: 16px 24px;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;;
-    display: flex;
-    cursor: pointer;
-}
 
-button .alterarSenha:hover {
-  
-   cursor: pointer;
 }
-
-
-
 button:hover {
- 
-   background: linear-gradient(90deg, #D39904 8%, #A47600 29%, #8C5C00 48%, #D18A00 69%, #E49600 85%, #F2CC00 100%);
+    background: linear-gradient(90deg, #D39904 8%, #A47600 29%, #8C5C00 48%, #D18A00 69%, #E49600 85%, #F2CC00 100%);
     background-size: 200% 100%;
     background-position: 100%;
+    transition: 0.5s;
    cursor: pointer;
 }
 
@@ -193,6 +162,11 @@ height: 56px;
 left: 310px;
 
 
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 900;
+font-size: 48px;
+line-height: 56px;
 text-align: center;
 
 background: conic-gradient(from 222.76deg at 48.5% 50%, #FFB800 -50.04deg, #F6B714 51.17deg, #C3801C 93.96deg, #FFD600 141.07deg, #C38100 185.72deg, #E5B300 259.56deg, #FFB800 309.96deg, #F6B714 411.17deg);

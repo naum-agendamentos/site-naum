@@ -203,7 +203,8 @@ footer {
 .container-content {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 50vh;
     gap: 10vw;
@@ -217,16 +218,14 @@ footer {
     height: auto;
 }
 
-.footer-content ul {
+.footer-content {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: start;
-    width: 33%;
-    height: 100%;
-    font-size: 15px;
-    font-weight: 500;
-    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    
 }
 
 .footer-content ul li,
@@ -236,101 +235,27 @@ footer {
 }
 
 .footer-content ul li:first-of-type {
+
     color: #FFF;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto';
     font-weight: 500;
     font-size: 24px;
     -webkit-text-stroke-width: .6px;
     -webkit-text-stroke-color: #FFF;
+    margin-right: 10px; 
     margin-bottom: 10px;
 }
 
 
-@media (max-width: 1024px) {
-    .cards-parceiros {
-        flex-direction: column;
-    }
-
-    .parceiros-info {
-        width: 90%;
-    }
-
-    .container-content {
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 2rem;
-    }
-
-    .footer-content ul,
-    .copy ul {
-        width: 100%;
-        text-align: center;
-    }
-
-    .redes-sociais ul {
-        width: 50%;
-    }
+.footer-content ul {
+    display: flex;
+    flex-direction: row; /* Alterado de column para row */
+    justify-content: space-around;
+    align-items: start;
+    width: 100%; /* Ajustado para ocupar a largura total */
+    height: 100%;
+    font-size: 15px;
+    font-weight: 500;
+    list-style-type: none;
 }
 
-@media (max-width: 768px) {
-    .cards-parceiros {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .parceiros-info {
-        width: 90%;
-        height: auto;
-    }
-
-    .container-content {
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 2rem;
-        gap: 2rem;
-    }
-
-    .footer-content ul,
-    .copy ul {
-        width: 100%;
-        text-align: center;
-    }
-
-    .redes-sociais ul {
-        width: 50%;
-    }
-}
-
-@media (max-width: 480px) {
-    nav {
-        padding: 1rem;
-    }
-
-    .navbar-options {
-        gap: 1.5rem;
-        font-size: 18px;
-    }
-
-    .section-title {
-        font-size: 36px;
-        line-height: 42.19px;
-    }
-
-    .parceiros-info {
-        width: 100%;
-    }
-
-    .container-content {
-        padding: 2rem 1rem;
-    }
-
-    .footer-content ul,
-    .copy ul {
-        width: 100%;
-        text-align: center;
-    }
-
-    .redes-sociais ul {
-        width: 100%;
-    }
-}
