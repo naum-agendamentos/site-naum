@@ -13,7 +13,7 @@
 html {
     scroll-padding-top: 7vh;
     scroll-behavior: smooth;
-    width: 100vw;
+    width: 100%;
 }
 
 .select-disable {
@@ -36,11 +36,11 @@ html {
     font-weight: normal;
 }
 
-[element-anime] {
+/* [element-anime] {
     opacity: 0;
     transition: .7s;
     z-index: -1;
-}
+} */
 
 [element-anime].animate {
     opacity: 1;
@@ -77,7 +77,7 @@ html {
 }
 
 body {
-    width: 100vw;
+    width: 100%;
     height: auto;
     color: #FFF;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -143,16 +143,14 @@ header * {
     flex-direction: column;
     width: 100%;
     height: 97vh;
-    gap: 5vh;
+    gap: 1vh;
 }
 
 .header-content h1 {
-    width: 397px;
-    height: 80px;
     gap: 0px;
     opacity: 0px;
     font-family: Black Ops One;
-    font-size: 130px;
+    font-size: 128px;
     text-align: center;
 }
 
@@ -217,14 +215,13 @@ section {
 .section-title {
     border: 1px 0px 0px 0px;
     font-family: Roboto;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 900;
     background: conic-gradient(from 222.76deg at 48.5% 50%, #FFB800 -50.04deg, #F6B714 51.17deg, #C3801C 93.96deg, #FFD600 141.07deg, #C38100 185.72deg, #E5B300 259.56deg, #FFB800 309.96deg, #F6B714 411.17deg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 56.25px;
     text-align: center;
-
 }
 
 .info-container {
@@ -241,7 +238,7 @@ section {
     background: conic-gradient(from 222.76deg at 48.5% 50%, #FFB800 -50.04deg, #E1B000 43.56deg, #FFAB08 93.96deg, #FFD600 133.69deg, #FFDB5C 185.72deg, #CB9E00 248.76deg, #FFB800 309.96deg, #E1B000 403.56deg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 300;
     line-height: 56.25px;
     text-align: center;
@@ -261,7 +258,7 @@ hr {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5vw;
+    gap: 10vw;
     padding: 45px 0;
 
 }
@@ -269,7 +266,7 @@ hr {
 .section-title-servicos {
     border: 1px 0px 0px 0px;
     font-family: Roboto;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 900;
     background: conic-gradient(from -90deg at 51.5% 39.29%, #C3C3C3 -26.32deg, #FDFDFD 38.84deg, #E2E2E2 67.45deg, #B2B2B2 229.4deg, #C3C3C3 333.68deg, #FDFDFD 398.84deg);
     -webkit-background-clip: text;
@@ -287,13 +284,29 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 400px;
-    width: 333px;
+    height: 350px;
+    width: 300px;
     background-color: rgba(0, 0, 0, 1);
     border-radius: 35px;
     transition: 0.6s !important;
     overflow: hidden;
 }
+
+
+/* .servicos-info {
+    border: 1px solid rgba(255, 184, 0, 1);
+    box-shadow: 15px 4px 15px 0px rgba(143, 143, 143, 0.21);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 255px;
+    width: 369px;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 35px;
+    transition: 0.6s !important;
+    overflow: hidden;
+} */
 
 .servicos-info:hover {
     transform: translate3d(-1vw, -3vh, 0) scale(1.05) !important;
@@ -314,7 +327,7 @@ hr {
 
 .servicos-info .info-card {
     font-family: Roboto;
-    font-size: 25px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 37.5px;
     text-align: center;
@@ -334,10 +347,8 @@ hr {
     flex-direction: column;
     justify-content: first baseline;
     width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-image: url(../assets/imgs/background-home.jpeg);
-    height: 700px;
+    
+    height: 600px;
 
 }
 
@@ -417,15 +428,19 @@ hr {
     cursor: default;
 }
 
+.background {
+    background-size: cover;
+    background-position: center;
+    background-image: url(../assets/imgs/background-home.jpeg);
+}
+
 #contratar {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: black;
-    height: 1100px;
+    height: 800px;
     gap: 30px;
-
 }
 
 #contratar:before {
@@ -454,8 +469,8 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 655.18px;
-    height: 454.83px;
+    width: 530.91px;
+    height: 368.57px;
     background-color: rgba(0, 0, 0, 1);
     overflow: hidden;
 }
@@ -463,7 +478,7 @@ hr {
 .contratar-title {
     border: 1px 0px 0px 0px;
     font-family: Roboto;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 900;
     background: conic-gradient(from -90deg at 51.5% 39.29%, #C3C3C3 -26.32deg, #FDFDFD 38.84deg, #E2E2E2 67.45deg, #B2B2B2 229.4deg, #C3C3C3 333.68deg, #FDFDFD 398.84deg);
     -webkit-background-clip: text;
@@ -488,11 +503,11 @@ hr {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 900;
-    font-size: 48px;
+    font-size: 24px;
     line-height: 56px;
     color: rgba(253, 253, 253, 1);
-    width: 503px;
-    height: 88px;
+    width: 276px;
+    height: 60px;
     background-image: repeating-linear-gradient(to right, #a2682a 0%, #be8c3c 8%, #be8c3c 18%, #d3b15f 27%, #f5e781 35%, #f5f591 40%, #faf0a0 50%, #d3b15f 58%, #be8c3c 67%, #b17b32 77%, #bb8332 83%, #d4a245 88%, #e1b453 93%, #a4692a 100%);
     background-size: 150%;
     border-radius: 15px;
