@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: Roboto;
+    background-image: url(../assets/imgs/fundo-escurecido.png);
+    background-size: cover;
+    color: #FFF;
+
+    overflow-x: hidden;
+    background-size: cover;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.select-disable {
+    user-select: none;
+}
+
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #00000055;
+}
+
+body::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #747483 30%, #b4b5c4 70%);
+}
+
+button {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 35px;
+    line-height: 56px;
+    width: 230px;
+    height: 70px;
+    border-radius: 15px;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.btn-editar{
+    background: linear-gradient(90deg, #D39904 8%, #A47600 29%, #8C5C00 48%, #D18A00 69%, #E49600 85%, #F2CC00 100%);
+    color: #e5e5e5;
+}
+.btn-editar:hover {
+ cursor: pointer;
+}
+.btn-deletar{
+    
+    background-color: red;
+    color: #e5e5e5;
+}
+.btn-deletar:hover {
+ cursor: pointer;
+}
+@keyframes MoveBackgroundPosition {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+
+button:hover {
+    border: solid 2px #ffffff93;
+    cursor: pointer;
+    transition: 1s;
+}
+
+h1 {
+    margin-top: 15vh;
+    width: 801px;
+    height: 56px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+    background: conic-gradient(from 222.76deg at 48.5% 50%, #FFB800 -50.04deg, #F6B714 51.17deg, #C3801C 93.96deg, #FFD600 141.07deg, #C38100 185.72deg, #E5B300 259.56deg, #FFB800 309.96deg, #F6B714 411.17deg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+.btns-img {
+    display: flex;
+   align-content: center;
+    gap: 3vw;
+}
+.logoN {
+    font-family: 'Black Ops One', sans-serif;
+    /* Corrigido o nome da fonte */
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.navbar-options {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    gap: 3vw;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 28.13px;
+    text-align: center;
+    list-style: none;
+}
+
+.navbar-options li a {
+    display: inline-block;
+    position: relative;
+    background-image: linear-gradient(to right, #FFB800, #FFD600 50%, #FFF 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    font-weight: 500;
+    padding: 5px 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+ 
+}
+
+
+.navbar-options li a:hover {
+    background-position: 0;
+}
+
+
+#parceiros {
+
+    display: flex;
+    /* Removido o flex-direction: column */
+    justify-content: center;
+    /* Alterado para center */
+    width: 100%;
+    background-size: cover;
+    flex-wrap: wrap;
+    background-position: center;
+    min-height: 100vh;
+    /* Alterado para min-height */
+}
+
+.cards-parceiros {
+    margin-top: 9px;
+    border: 1px solid #FFB800;
+    border-color: rgb(221,153,4);
+    border-radius: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    /* Adicionado para quebrar em várias linhas */
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    width: 75%;
+    gap: 3vw;
+    padding: 45px 0;
+}
+
+.cards-parceiros p {
+    align-content: flex-start;
+    
+    display: flex;
+    font-family: 'roboto';
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 50px;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.parceiros-info {
+    border: 1px solid rgba(255, 184, 0, 1);
+    box-shadow: 15px 4px 15px 0px rgba(143, 143, 143, 0.21);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 364px;
+    height: 230px;
+    background-color: rgba(0, 0, 0, 1);
+    overflow: hidden;
+}
