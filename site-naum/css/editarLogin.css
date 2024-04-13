@@ -122,29 +122,57 @@ body::-webkit-scrollbar-track {
 
 }
 
-input {
-    width: 300px;
-    height: 40px;
-    border-color: white;
-    border-radius: 0.3rem;
+p {
+    width: 55%;
+    font-size: 24px;
+    font-weight: 400;
+    color: #ffffff;
+    font-family: Roboto;
+
+    font-style: normal;
+font-weight: 900;
+font-size: 24px;
+line-height: 28px;
+background: conic-gradient(from -90deg at 51.5% 39.29%, #C3C3C3 -26.32deg, #FDFDFD 38.84deg, #E2E2E2 67.45deg, #B2B2B2 229.4deg, #C3C3C3 333.68deg, #FDFDFD 398.84deg);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+color: transparent;
+
 }
+input {
+    text-align: left;
+    width: 80%;
+    padding: 1rem;
+
+    display: flex;
+    font-family: Roboto;
+    width: 445px;
+    height: 38px;
+    border: none;
+    background: #ffffff;
+    border-radius: 6px;
+}
+
 
 button {
     
+    border: none;
     display: flex;
-    align-items: center;
     justify-content: center;
     align-items: center;
-    padding: 16px 24px;
-    gap: 10px;
-    font-size: 20px;
-    width: 222px;
-    height: 38px;
-    left: 280px;
-    top: 200px;
-
+    text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    width: 162px;
+    height: 43px;
+   color: #b4b5c4;
     background: linear-gradient(90deg, #D39904 8%, #A47600 29%, #8C5C00 48%, #D18A00 69%, #E49600 85%, #F2CC00 100%);
-    border-radius: 7px;
+    border-radius: 15px;
+    transition: 1s;
+    cursor: pointer;
 
 }
 button:hover {
