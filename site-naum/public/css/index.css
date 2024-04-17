@@ -24,18 +24,6 @@ html {
     user-select: none;
 }
 
-@font-face {
-    font-family: 'Code Next Bold';
-    src: url(../assets/fonts/code_next/CodeNext-Trial-Bold.otf);
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: 'Code Next Regular';
-    src: url(../assets/fonts/code_next/CodeNext-Trial-Regular.otf);
-    font-weight: normal;
-}
-
 /* [element-anime] {
     opacity: 0;
     transition: .7s;
