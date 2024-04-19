@@ -1,12 +1,4 @@
-.card-musica {
-    display: flex;
-    flex-wrap: wrap;
-    /* Adicionado para quebrar em várias linhas */
-    justify-content: center;
-    align-items: center;
-    gap: 3vw;
-    padding: 45px 0;
-}
+
 
 .imagem-container {
     border: 1px solid rgba(255, 184, 0, 1);

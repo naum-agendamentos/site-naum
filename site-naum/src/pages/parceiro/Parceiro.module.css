@@ -3,6 +3,7 @@
     top: 20vh;
     height: calc(100vh - 8vh);
     overflow-y: auto;
+    
 }
 
 .section-title {
@@ -37,7 +38,7 @@
 }
 
 
-.content-musicas {
+.content-parceiros {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -45,32 +46,32 @@
     gap: 5vh;
 }
 
-.content-musicas::after {
+.content-parceiros::after {
     content: '';
     height: 2rem;
     flex-basis: 100%;
 }
 
-.content-musicas::before {
+.content-parceiros::before {
     content: '';
     height: 1rem;
     flex-basis: 100%;
 }
 
 @media screen and (max-width: 1200px) {
-    .quadrado {
+    .parceiros {
         flex-basis: calc(99% - 20px);
     }
 }
 
 @media screen and (max-width: 900px) {
-    .quadrado {
+    .parceiros {
         flex-basis: calc(45% - 20px);
     }
 }
 
 @media screen and (max-width: 520px) {
-    .quadrado {
+    .parceiros {
         flex-basis: calc(100% - 20px);
     }
 }

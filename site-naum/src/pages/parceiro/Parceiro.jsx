@@ -117,9 +117,9 @@ const Parceiro = () => {
                             </div>
                         </div>
 
-                        <div className={styles["content-musicas"]}>
+                        <div className={styles["content-parceiros"]}>
                             {cardsData && cardsData.map((data, index) => (
-                                <div key={index} className={styles["quadrado"]}>
+                                <div key={index}>
                                     <CardParceiros
                                         imagemSrc={data.imagem}
                                     />

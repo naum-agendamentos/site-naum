@@ -11,7 +11,7 @@ const CardParceiros = ({
 }) => {
     return (
         // Contêiner principal do cartão
-        <div className={styles["card-musica"]}>
+        <div>
             {/* Contêiner para a imagem */}
             <div className={styles["imagem-container"]}>
                 {/* Exibe a imagem da música; usa imagemSrc se fornecido, caso contrário usa capaImg */}
