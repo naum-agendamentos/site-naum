@@ -1,0 +1,29 @@
+.content {
+    display: flex;
+    padding: 0 1rem;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url(../../utils/assets/background404.png);
+}
+
+.content h1 {
+    font-family: 'Black Ops One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 50px;
+    text-align: center;
+}
+
+
+
+.content h1 span {
+    font-family: 'Black Ops One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    text-align: center;
+}
+
