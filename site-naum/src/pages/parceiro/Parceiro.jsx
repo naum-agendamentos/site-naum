@@ -5,7 +5,8 @@ import React, { useState, useEffect } from "react"; // Importa React, useState e
 import NavBar from "../../components/navbar/NavBar"; // Importa o componente NavBar
 import CardParceiros from "../../components/cardParceiros/CardParceiros"; // Importa o componente CardParceiros
 import StarVazia from "../../utils/assets/StarVazia.png";
-import Menu from "../../utils/assets/MenuRounded.png"
+import Menu from "../../utils/assets/MenuRounded.png";
+import Footer from "../../components/footer/Footer";
 
 const Parceiro = () => {
     const [cardsData, setCardsData] = useState();
@@ -89,17 +90,17 @@ const Parceiro = () => {
 
             <div class="borda-gradiente-left">
                 <div class="borda-gradiente-right">
-                <NavBar />
+                    <NavBar />
 
                     <section className={styles["parceiros"]} id="parceiros">
-                        
+
 
 
                         {/* Renderiza o componente NavBar, passando o logo como propriedade */}
-                       
+
                         {/* Contêiner para os cartões de música */}
-                        
-                            
+
+
                         <h1 className={styles["section-title"]}>NOSSOS CLIENTES</h1>
                         <br />
                         <br />
@@ -116,17 +117,17 @@ const Parceiro = () => {
                                 <a href="#5" onclick="mudarEstrela(5)"><img src={StarVazia} alt="" /></a>
                             </div>
                         </div>
-
-                        <div className={styles["content-parceiros"]}>
+                    </section>
+                    <div className={styles["content-parceiros"]}>
                             {cardsData && cardsData.map((data, index) => (
                                 <div key={index}>
                                     <CardParceiros
-                                        imagemSrc={data.imagem}
+                                        foto={data.foto}
                                     />
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    <Footer />
                 </div>
             </div>
         </>

@@ -369,7 +369,8 @@ hr {
     background-position: 0;
 }
 
-.cards-parceiros {
+
+.content-parceiros {
     display: flex;
     flex-direction: row;
     justify-content: center;

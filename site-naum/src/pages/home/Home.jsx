@@ -1,7 +1,10 @@
-import React from "react";
+import api from "../../api"; // Importa a instância da API para fazer chamadas HTTP
 import style from './Home.module.css';
 import NavBar from './../../components/navbar/NavBar';
 import Footer from "../../components/footer/Footer";
+import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react"; // Importa React, useState e useEffect de 'react'
+import CardParceiros from "../../components/cardParceiros/CardParceiros"; // Importa o componente CardParceiros
 
 //imagens sobre nos
 import agenda from '../../utils/assets/agendaServicos.png';
@@ -12,7 +15,6 @@ import tela from '../../utils/assets/telaServicos.png';
 import barbeiro from '../../utils/assets/barbeiroServicos.png';
 
 //imagens parceiros
-import parceiro from '../../utils/assets/imagemParceiro.png';
 
 //imagens contratar
 import contratar from '../../utils/assets/contratar.png';
@@ -20,7 +22,32 @@ import contratar from '../../utils/assets/contratar.png';
 
 
 
-const homePage = () => {
+const HomePage = () => {
+
+
+
+    const navigate = useNavigate(); // Inicializa o hook de navegação
+
+    const nossosParceiros = () => { // Função chamada ao clicar em cancelar
+        navigate("/parceiros"); // Redireciona para a página de músicas
+    };
+
+    const [cardsData, setCardsData] = useState();
+
+    function recuperarValorDoCard() {
+        api.get().then((response) => {
+            const { data } = response;
+            console.log(response)
+            setCardsData(data)
+        }).catch(() => {
+            console.log("Deu erro, tente novamente!") // Caso haja um erro na requisição, exibe uma mensagem no console
+        })
+    }
+
+    useEffect(() => {
+        recuperarValorDoCard();
+    }, [])
+
     return (
         // Fragmento React para agrupar múltiplos elementos sem adicionar um nó extra ao DOM
         <>
@@ -131,59 +158,72 @@ const homePage = () => {
                     <div className={style["background"]}>
 
                         <section className={style["parceiros"]} id="parceiros">
+
+
                             <h1 className={style["section-title"]} element-anime="center">CONFIRA NOSSOS PARCEIROS DE
                                 <br />SUCESSO
                             </h1>
                             <ul className={style["ver-mais"]}>
-                                <li><a href="#sobre" element-anime="center">VER TODOS</a></li>
+                                <li><a onClick={nossosParceiros} href="#parceiros" element-anime="center">VER TODOS</a></li>
                             </ul>
 
-                            <div className={style["cards-parceiros"]}>
-                                <div className={style["parceiros-info"]}>
-                                    <div>
-                                        <img src={parceiro} alt="parceiro" />
+                            <div className={style["content-parceiros"]}>
+                                {cardsData && cardsData.slice(0, 3).map((data, index) => (
+                                    <div key={index}>
+                                        <CardParceiros
+                                            foto={data.foto}
+                                        />
                                     </div>
-
-                                </div>
-                                <div className={style["parceiros-info"]}>
-                                    <div>
-                                        <img src={parceiro} alt="parceiro" />
-                                    </div>
-                                </div>
-
-                                <div className={style["parceiros-info"]}>
-                                    <div>
-                                        <img src={parceiro} alt="parceiro" />
-                                    </div>
-                                </div>
-
-                            </div>
-                        </section>
-
-                        <section className={style["contratar"]}>
-
-                            <div className={style["card-contratar"]} id="NosContatar">
-                                <div className={style["contratar-info"]}>
-                                    <div>
-                                        <img src={contratar} alt="contratar" />
-                                    </div>
-                                </div>
-                            </div>
-                            <h1 className={style["contratar-title"]} element-anime="center">DESEJA SER UM BARBEIRO DE
-                                <br /><span>SUCESSO?</span>
-                            </h1>
-
-                            <div>
-                                <a href="#contratar" element-anime="center">CONTRATAR AGORA</a>
-                            </div>
-                        </section>
+                                ))}
+                            
                     </div>
-                </div>
+
+                    {/* <div className={style["cards-parceiros"]}>
+                                <div className={style["parceiros-info"]}>
+                                    <div>
+                                        <img src={parceiro} alt="parceiro" />
+                                    </div>
+
+                                </div>
+                                <div className={style["parceiros-info"]}>
+                                    <div>
+                                        <img src={parceiro} alt="parceiro" />
+                                    </div>
+                                </div>
+
+                                <div className={style["parceiros-info"]}>
+                                    <div>
+                                        <img src={parceiro} alt="parceiro" />
+                                    </div>
+                                </div>
+
+                            </div> */}
+                </section>
+
+                <section className={style["contratar"]}>
+
+                    <div className={style["card-contratar"]} id="NosContatar">
+                        <div className={style["contratar-info"]}>
+                            <div>
+                                <img src={contratar} alt="contratar" />
+                            </div>
+                        </div>
+                    </div>
+                    <h1 className={style["contratar-title"]} element-anime="center">DESEJA SER UM BARBEIRO DE
+                        <br /><span>SUCESSO?</span>
+                    </h1>
+
+                    <div>
+                        <a href="#contratar" element-anime="center">CONTRATAR AGORA</a>
+                    </div>
+                </section>
             </div>
-            <Footer />
+        </div >
+            </div >
+    <Footer />
 
         </>
     );
 };
 // Exporta o componente Home para que possa ser usado em outras partes da aplicação
-export default homePage;
+export default HomePage;

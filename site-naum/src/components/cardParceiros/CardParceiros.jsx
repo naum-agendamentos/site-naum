@@ -7,7 +7,7 @@ import capaImg from "../../utils/assets/imagemParceiro.png";
 
 // Define o componente CardMusica como uma função que recebe propriedades
 const CardParceiros = ({
-     imagemSrc,
+     foto,
 }) => {
     return (
         // Contêiner principal do cartão
@@ -15,7 +15,7 @@ const CardParceiros = ({
             {/* Contêiner para a imagem */}
             <div className={styles["imagem-container"]}>
                 {/* Exibe a imagem da música; usa imagemSrc se fornecido, caso contrário usa capaImg */}
-                <img src={imagemSrc ? imagemSrc : capaImg} alt="Imagem"
+                <img src={foto ? foto : capaImg} alt="Imagem"
                     className={styles["imagem"]} />
             </div>
         </div>
