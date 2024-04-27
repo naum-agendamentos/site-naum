@@ -1,11 +1,10 @@
 import api from "../../api"; // Importa a API para comunicação com o backend
 import { toast } from "react-toastify"; // Importa toast para exibir mensagens de sucesso ou erro
-import React, { useState } from "react"; // Importa React e o hook useState para gerenciamento de estado
+import React, { useState, useEffect } from "react"; // Importa React e o hook useState para gerenciamento de estado
 import styles from "./CadastrarBarbearia.module.css"; // Importa os estilos CSS para este componente
 import { useNavigate } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
 import NavBarLogin from "../../components/navbar/NavBarLogin"; // Importa o componente NavBar para a barra de navegação
 import { inputSomenteTexto } from "../../utils/globals"; // Import da função global
-//import imgNaum from "../../utils/assets/logos/NAUM.png";
 
 function Adicionar() {
     const navigate = useNavigate(); // Inicializa o hook de navegação
@@ -18,6 +17,44 @@ function Adicionar() {
     const [numero, setNumero] = useState(""); // Estado para armazenar o nome da música
     const [uf, setUf] = useState(""); // Estado para armazenar o nome da música
     const [foto, setFoto] = useState(""); // Estado para armazenar o nome da música
+
+
+    useEffect(() => {
+        const handleCepInput = (e) => {
+            const cep = e.target.value;
+
+            if (cep.length === 8) {
+                const apiUrl = `https://viacep.com.br/ws/${cep}/json/`;
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            setRua(data.logradouro);
+                            setcidade(data.localidade);
+                            setbairro(data.bairro);
+                            setUf(data.uf);
+
+                            toast.success("Endereço encontrado"); // Exibe uma mensagem de sucesso
+                        } else {
+                            toast.error("CEP não encontrado")
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erro na requisição: " + error);
+                    });
+            }
+        };
+
+        const cepInput = document.getElementById('IptCep');
+        cepInput.addEventListener('input', handleCepInput);
+
+        return () => {
+            cepInput.removeEventListener('input', handleCepInput);
+        };
+    }, []);
+
+    
 
     const handleSave = () => { // Função chamada ao clicar em salvar
         const objetoAdicionado = { // Cria um objeto com os dados do formulário
@@ -34,7 +71,7 @@ function Adicionar() {
 
         // Faz uma requisição POST para a API
         api.post(``, objetoAdicionado).then(() => {
-            toast.success("Novo Card criado com sucesso!"); // Exibe uma mensagem de sucesso
+            toast.success("Nova barbearia adicionado com sucesso!"); // Exibe uma mensagem de sucesso
             sessionStorage.setItem("editado", JSON.stringify(objetoAdicionado)); // Armazena os dados na sessionStorage
             navigate("/parceiros"); // Redireciona para a página de músicas
         }).catch(() => {
@@ -50,6 +87,7 @@ function Adicionar() {
     //     navigate("/parceiros"); // Redireciona para a página de músicas
     // };
 
+
     return (
         <>
             <div class="borda-gradiente-left">
@@ -64,14 +102,14 @@ function Adicionar() {
                                 {/* Chamar a função importada no onInput */}
                                 <input type="text" onInput={inputSomenteTexto} value={nome} placeholder="Nome da Barbearia" onChange={(e) => handleInputChange(e, setnome)} />
                                 <input type="text" value={linkBarbearia} placeholder="Link da Barbearia" onChange={(e) => handleInputChange(e, setlinkBarbearia)} />
-                                <input type="text" id="IptCEPEndereco" value={cep} placeholder="Cep" onChange={(e) => handleInputChange(e, setCep)} />
+                                <input type="text" maxLength={8} id="IptCep" value={cep} placeholder="CEP" onChange={(e) => handleInputChange(e, setCep)} />
                                 <input type="text" value={rua} placeholder="Rua" onChange={(e) => handleInputChange(e, setRua)} />
                                 <input type="text" value={cidade} placeholder="Cidade" onChange={(e) => handleInputChange(e, setcidade)} />
                                 <input type="text" value={bairro} placeholder="Bairro" onChange={(e) => handleInputChange(e, setbairro)} />
 
                                 <div className={styles["inputs-junto"]}>
                                     <input type="text" value={numero} placeholder="Número" onChange={(e) => handleInputChange(e, setNumero)} />
-                                    <input type="text" value={uf} placeholder="Uf" onChange={(e) => handleInputChange(e, setUf)} />
+                                    <input type="text"maxLength={2} value={uf} placeholder="Uf" onChange={(e) => handleInputChange(e, setUf)} />
                                 </div>
 
                                 <input type="text" value={foto} placeholder="foto" onChange={(e) => handleInputChange(e, setFoto)} />
