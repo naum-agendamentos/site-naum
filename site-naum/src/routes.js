@@ -5,6 +5,8 @@ import Parceiro from "./pages/parceiro/Parceiro";
 import EditarLogin from"./pages/editarLogin/EditarLogin";
 import NotFound from "./pages/notFound/NotFound";
 import CadastrarBarbearia from "./pages/cadastrarBarbearia/CadastrarBarbearia";
+import NossosClientes from "./pages/NossosClientes/NossosClientes";
+import EditarBarbearia from "./pages/editarBarbearia/EditarBarbearia";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function Rotas() {
@@ -18,6 +20,8 @@ function Rotas() {
                     <Route path="/editar-login" element={<EditarLogin />} />
                     <Route path="/*" element={<NotFound />} />
                     <Route path="/cadastrar" element={<CadastrarBarbearia />} />
+                    <Route path="/clientes" element={<NossosClientes />} />
+                    <Route path="/editar-barbearia" element={<EditarBarbearia />} />
                 </Routes>
             </BrowserRouter>
         </>
