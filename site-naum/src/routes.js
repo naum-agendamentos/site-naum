@@ -21,7 +21,7 @@ function Rotas() {
                     <Route path="/*" element={<NotFound />} />
                     <Route path="/cadastrar" element={<CadastrarBarbearia />} />
                     <Route path="/clientes" element={<NossosClientes />} />
-                    <Route path="/editar-barbearia" element={<EditarBarbearia />} />
+                    <Route path="/editar-barbearia/:id" element={<EditarBarbearia />} />
                 </Routes>
             </BrowserRouter>
         </>

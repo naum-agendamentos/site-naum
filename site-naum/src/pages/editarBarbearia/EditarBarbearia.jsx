@@ -2,22 +2,71 @@ import api from "../../api"; // Importa a API para comunicação com o backend
 import { toast } from "react-toastify"; // Importa toast para exibir mensagens de sucesso ou erro
 import React, { useEffect, useState } from "react"; // Importa React e o hook useState para gerenciamento de estado
 import styles from "./EditarBarbearia.module.css"; // Importa os estilos CSS para este componente
-import { useNavigate } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
+import { useNavigate, useParams } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
 import NavBarLogin from "../../components/navbar/NavBarLogin"; // Importa o componente NavBar para a barra de navegação
 import { inputSomenteTexto } from "../../utils/globals"; // Import da função global
 //import imgNaum from "../../utils/assets/logos/NAUM.png";
 
 function Adicionar() {
     const navigate = useNavigate(); // Inicializa o hook de navegação
-    const [cidade, setcidade] = useState(""); // Estado para armazenar o cidade da música
+    const { id } = useParams();
+    const [cidade, setCidade] = useState(""); // Estado para armazenar o cidade da música
     const [rua, setRua] = useState(""); // Estado para armazenar o gênero da música
-    const [bairro, setbairro] = useState(""); // Estado para armazenar o URL da bairro da música
-    const [linkBarbearia, setlinkBarbearia] = useState(""); // Estado para armazenar o nome do linkBarbearia
-    const [nome, setnome] = useState(""); // Estado para armazenar o nome da música
+    const [bairro, setBairro] = useState(""); // Estado para armazenar o URL da bairro da música
+    const [linkBarbearia, setLinkBarbearia] = useState(""); // Estado para armazenar o nome do linkBarbearia
+    const [nome, setNome] = useState(""); // Estado para armazenar o nome da música
     const [cep, setCep] = useState(""); // Estado para armazenar o nome da música
     const [numero, setNumero] = useState(""); // Estado para armazenar o nome da música
     const [uf, setUf] = useState(""); // Estado para armazenar o nome da música
     const [foto, setFoto] = useState(""); // Estado para armazenar o nome da música
+
+
+    const handleInputChange = (event, setStateFunction) => {
+        setStateFunction(event.target.value);
+    };
+
+    const handleSave = async () => {
+        try {
+            await api.put(`/${id}`, {
+                nome,
+                linkBarbearia,
+                rua,
+                cidade,
+                bairro,
+                cep,
+                numero,
+                uf,
+                foto
+            });
+            toast.success('Dados editados com sucesso!');
+            navigate("/clientes");
+        } catch (error) {
+            toast.error('Ocorreu um erro ao salvar os dados. Por favor, tente novamente.');
+        }
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get(`/${id}`);
+                const { data } = response;
+                const { nome, linkBarbearia, rua, cidade, bairro, cep, numero, uf, foto } = data;
+                setNome(nome);
+                setLinkBarbearia(linkBarbearia);
+                setRua(rua);
+                setCidade(cidade)
+                setBairro(bairro);
+                setCep(cep);
+                setNumero(numero);
+                setUf(uf);
+                setFoto(foto);
+            } catch (error) {
+                console.log("Erro ao buscar os detalhes do barbeiro: ", error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
 
 
     useEffect(() => {
@@ -32,8 +81,8 @@ function Adicionar() {
                     .then(data => {
                         if (!data.erro) {
                             setRua(data.logradouro);
-                            setcidade(data.localidade);
-                            setbairro(data.bairro);
+                            setCidade(data.localidade);
+                            setBairro(data.bairro);
                             setUf(data.uf);
 
                             toast.success("Endereço encontrado"); // Exibe uma mensagem de sucesso
@@ -55,34 +104,6 @@ function Adicionar() {
         };
     }, []);
 
-
-    const handleSave = () => { // Função chamada ao clicar em salvar
-        const objetoAdicionado = { // Cria um objeto com os dados do formulário
-            nome,
-            linkBarbearia,
-            rua,
-            cidade,
-            bairro,
-            cep,
-            numero,
-            uf,
-            foto
-        };
-
-        // Faz uma requisição POST para a API
-        api.post(``, objetoAdicionado).then(() => {
-            toast.success("Novo Card criado com sucesso!"); // Exibe uma mensagem de sucesso
-            sessionStorage.setItem("editado", JSON.stringify(objetoAdicionado)); // Armazena os dados na sessionStorage
-            navigate("/parceiros"); // Redireciona para a página de músicas
-        }).catch(() => {
-            toast.error("Ocorreu um erro ao salvar os dados, por favor, tente novamente."); // Exibe uma mensagem de erro se a requisição falhar
-        })
-    };
-
-    const handleInputChange = (event, setStateFunction) => { // Função para manipular as mudanças nos inputs
-        setStateFunction(event.target.value); // Atualiza o estado correspondente
-    }
-
     // const handleBack = () => { // Função chamada ao clicar em cancelar
     //     navigate("/parceiros"); // Redireciona para a página de músicas
     // };
@@ -99,12 +120,12 @@ function Adicionar() {
                             <form>
                                 {/* Inputs para cada campo do formulário */}
                                 {/* Chamar a função importada no onInput */}
-                                <input type="text" onInput={inputSomenteTexto} value={nome} placeholder="Nome da Barbearia" onChange={(e) => handleInputChange(e, setnome)} />
-                                <input type="text" value={linkBarbearia} placeholder="Link da Barbearia" onChange={(e) => handleInputChange(e, setlinkBarbearia)} />
+                                <input type="text" onInput={inputSomenteTexto} value={nome} placeholder="Nome da Barbearia" onChange={(e) => handleInputChange(e, setNome)} />
+                                <input type="text" value={linkBarbearia} placeholder="Link da Barbearia" onChange={(e) => handleInputChange(e, setLinkBarbearia)} />
                                 <input type="text" maxLength={8} id="IptCep" value={cep} placeholder="CEP" onChange={(e) => handleInputChange(e, setCep)} />
                                 <input type="text" value={rua} placeholder="Rua" onChange={(e) => handleInputChange(e, setRua)} />
-                                <input type="text" value={cidade} placeholder="Cidade" onChange={(e) => handleInputChange(e, setcidade)} />
-                                <input type="text" value={bairro} placeholder="Bairro" onChange={(e) => handleInputChange(e, setbairro)} />
+                                <input type="text" value={cidade} placeholder="Cidade" onChange={(e) => handleInputChange(e, setCidade)} />
+                                <input type="text" value={bairro} placeholder="Bairro" onChange={(e) => handleInputChange(e, setBairro)} />
 
                                 <div className={styles["inputs-junto"]}>
                                     <input type="text" value={numero} placeholder="Número" onChange={(e) => handleInputChange(e, setNumero)} />

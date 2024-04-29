@@ -106,6 +106,7 @@ const Parceiro = () => {
                             {cardsData && cardsData.map((data, index) => (
                                 <div key={index}>
                                     <CardParceiros
+                                        id={data.id}
                                         foto={data.foto}
                                         nome={data.nome}
                                     />

@@ -73,7 +73,7 @@ function Adicionar() {
         api.post(``, objetoAdicionado).then(() => {
             toast.success("Nova barbearia adicionado com sucesso!"); // Exibe uma mensagem de sucesso
             sessionStorage.setItem("editado", JSON.stringify(objetoAdicionado)); // Armazena os dados na sessionStorage
-            navigate("/parceiros"); // Redireciona para a página de músicas
+            navigate("/clientes"); // Redireciona para a página de músicas
         }).catch(() => {
             toast.error("Ocorreu um erro ao salvar os dados, por favor, tente novamente."); // Exibe uma mensagem de erro se a requisição falhar
         })

@@ -4,18 +4,44 @@ import React from "react";
 import styles from "./CardParceirosUD.module.css";
 // Importa uma imagem padrão para ser usada caso nenhuma imagem específica seja fornecida
 import capaImg from "../../utils/assets/imagemParceiro.png";
+import api from "../../api";
+import { toast } from "react-toastify";
 
 import { useNavigate } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
 
 // Define o componente CardMusica como uma função que recebe propriedades
 const CardParceiros = ({
+    id,
     foto,
     nome,
 }) => {
     const navigate = useNavigate(); // Inicializa o hook de navegação
 
-    const editar = () => { // Função chamada ao clicar em cancelar
-        navigate("/editar-barbearia"); // Redireciona para a página de músicas
+
+    const editar = (id) => {
+        navigate(`/editar-barbearia/${id}`);
+    };
+
+    const handleDelete = (id) => {
+        if (window.confirm("Tem certeza que deseja deletar esta barbearia?")) {
+
+
+            api.delete(`/${id}`)
+                .then((response) => {
+
+                    console.log('Barbearia deletada!', response.data);
+                    toast.success("Barbearia deletada!");
+
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
+                })
+                .catch((error) => {
+                    console.error('Erro ao deletar Barbearia', error);
+                    toast.error("Erro ao deletar Barbearia");
+                });
+
+        }
     };
 
 
@@ -34,9 +60,9 @@ const CardParceiros = ({
 
                 <div className={styles["botoes"]}>
                     {/* Botão para editar as informações da música */}
-                    <button onClick={editar} className={styles["botao"]}>Editar</button>
+                    <button onClick={() => editar(id)} className={styles["botao"]}>EDITAR</button>
                     {/* Botão para excluir a música */}
-                    <button className={styles["botao"]}>Excluir</button>
+                    <button onClick={() => handleDelete(id)} className={styles["botao"]}>EXCLUIR</button>
                 </div>
             </div>
         </div>
