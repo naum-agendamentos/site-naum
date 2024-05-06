@@ -19,6 +19,13 @@
     object-fit: cover;
 }
 
+.texto {
+    max-width: 364px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .texto p {
     margin-left: 1%;
     font-family: Black Ops One;

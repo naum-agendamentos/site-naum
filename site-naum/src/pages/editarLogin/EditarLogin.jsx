@@ -12,7 +12,6 @@ const EditarLogin = () => {
                 <div className={style["banner"]}>
                     <div className={style["validarconta"]}><br/>
                         <h1> LOGIN</h1>
-                        <p>EMAIL</p><input id={style["input_email"]} placeholder="EMAIL"/>
                         <p>SENHA</p><input id={style["input_senha"]} placeholder="SENHA" type="password"/>
                         <p>NOVA SENHA</p><input id={style["input_senha"]} placeholder="NOVA SENHA" type="password"/>
                         <p>CONFIRMAR SENHA</p><input id={style["input_ConfSenha"]} placeholder="CONFIRMAR SENHA" type="password"/><br/>

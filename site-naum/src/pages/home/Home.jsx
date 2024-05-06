@@ -35,7 +35,7 @@ const HomePage = () => {
     const [cardsData, setCardsData] = useState();
 
     function recuperarValorDoCard() {
-        api.get().then((response) => {
+        api.get('barbearias').then((response) => {
             const { data } = response;
             console.log(response)
             setCardsData(data)

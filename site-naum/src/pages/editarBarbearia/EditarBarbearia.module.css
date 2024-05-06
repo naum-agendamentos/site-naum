@@ -65,6 +65,7 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    gap: 20%;
 }
 
 .buttons-container button {
@@ -92,6 +93,16 @@
 
 .buttons-container button:first-child:hover {
     background: linear-gradient(90deg, #be8a04 8%, #8b6300 29%, #7c5000 48%, #b87a00 69%, #b67700 85%, #bea200 100%);
+}
+
+
+.buttons-container .button-cancelar {
+    background: linear-gradient(90deg, #c01600 8%, #c01600 29%, #c01600 48%, #c01600 69%, #c01600 85%, #c01600 100%);
+    color: #ffffff;
+}
+.buttons-container .button-cancelar:hover {
+    background: linear-gradient(90deg, #911100 8%, #911100 29%, #911100 48%, #911100 69%, #911100 85%, #911100 100%);
+    color: #ffffff;
 }
 
 @media screen and (max-width: 900px) {

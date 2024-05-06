@@ -6,6 +6,7 @@ import styles from "./CardParceirosUD.module.css";
 import capaImg from "../../utils/assets/imagemParceiro.png";
 import api from "../../api";
 import { toast } from "react-toastify";
+import Swal from 'sweetalert2';
 
 import { useNavigate } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
 
@@ -23,51 +24,59 @@ const CardParceiros = ({
     };
 
     const handleDelete = (id) => {
-        if (window.confirm("Tem certeza que deseja deletar esta barbearia?")) {
+        Swal.fire({
+            title: "Deseja deletar a barbearia?",
+            text: "A barbearia será removida permanentemente",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "SIM",
+            cancelButtonText: "CANCELAR"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                api.delete(`barbearias/${id}`)
+                    .then((response) => {
+
+                        console.log('Barbearia deletada!', response.data);
+                        toast.success("Barbearia deletada!");
+
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2400);
+                    })
+                    .catch((error) => {
+                        console.error('Erro ao deletar Barbearia', error);
+                        toast.error("Erro ao deletar Barbearia");
+                    });
+            }
+        });
+    }
 
 
-            api.delete(`/${id}`)
-                .then((response) => {
+return (
+    // Contêiner principal do cartão
+    <div>
+        {/* Contêiner para a imagem */}
+        <div className={styles["imagem-container"]}>
+            {/* Exibe a imagem da música; usa imagemSrc se fornecido, caso contrário usa capaImg */}
+            <img src={foto ? foto : capaImg} alt="Imagem"
+                className={styles["imagem"]} />
+            {/* Contêiner para os botões */}
+            <div className={styles["texto"]}>
+                <p>{nome || "N/A"}</p>
+            </div>
 
-                    console.log('Barbearia deletada!', response.data);
-                    toast.success("Barbearia deletada!");
-
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 2000);
-                })
-                .catch((error) => {
-                    console.error('Erro ao deletar Barbearia', error);
-                    toast.error("Erro ao deletar Barbearia");
-                });
-
-        }
-    };
-
-
-    return (
-        // Contêiner principal do cartão
-        <div>
-            {/* Contêiner para a imagem */}
-            <div className={styles["imagem-container"]}>
-                {/* Exibe a imagem da música; usa imagemSrc se fornecido, caso contrário usa capaImg */}
-                <img src={foto ? foto : capaImg} alt="Imagem"
-                    className={styles["imagem"]} />
-                {/* Contêiner para os botões */}
-                <div className={styles["texto"]}>
-                    <p>{nome || "N/A"}</p>
-                </div>
-
-                <div className={styles["botoes"]}>
-                    {/* Botão para editar as informações da música */}
-                    <button onClick={() => editar(id)} className={styles["botao"]}>EDITAR</button>
-                    {/* Botão para excluir a música */}
-                    <button onClick={() => handleDelete(id)} className={styles["botao"]}>EXCLUIR</button>
-                </div>
+            <div className={styles["botoes"]}>
+                {/* Botão para editar as informações da música */}
+                <button onClick={() => editar(id)} className={styles["botao"]}>EDITAR</button>
+                {/* Botão para excluir a música */}
+                <button onClick={() => handleDelete(id)} className={styles["botao"]}>EXCLUIR</button>
             </div>
         </div>
+    </div>
 
-    );
+);
 };
 // Exporta o componente para que possa ser usado em outras partes da aplicação
 export default CardParceiros;

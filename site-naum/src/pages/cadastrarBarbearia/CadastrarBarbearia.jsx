@@ -70,7 +70,7 @@ function Adicionar() {
         };
 
         // Faz uma requisição POST para a API
-        api.post(``, objetoAdicionado).then(() => {
+        api.post(`barbearias`, objetoAdicionado).then(() => {
             toast.success("Nova barbearia adicionado com sucesso!"); // Exibe uma mensagem de sucesso
             sessionStorage.setItem("editado", JSON.stringify(objetoAdicionado)); // Armazena os dados na sessionStorage
             navigate("/clientes"); // Redireciona para a página de músicas

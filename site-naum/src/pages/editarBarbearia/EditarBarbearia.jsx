@@ -25,9 +25,13 @@ function Adicionar() {
         setStateFunction(event.target.value);
     };
 
+    const handCancel = () => { // Função chamada ao clicar em cancelar
+        navigate("/clientes"); // Redireciona para a página de músicas
+    };
+
     const handleSave = async () => {
         try {
-            await api.put(`/${id}`, {
+            await api.put(`barbearias/${id}`, {
                 nome,
                 linkBarbearia,
                 rua,
@@ -48,7 +52,7 @@ function Adicionar() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get(`/${id}`);
+                const response = await api.get(`barbearias/${id}`);
                 const { data } = response;
                 const { nome, linkBarbearia, rua, cidade, bairro, cep, numero, uf, foto } = data;
                 setNome(nome);
@@ -135,7 +139,8 @@ function Adicionar() {
                                 <input type="text" value={foto} placeholder="foto" onChange={(e) => handleInputChange(e, setFoto)} />
                                 <br />
                                 <div className={styles["buttons-container"]}> {/* Container para os botões de ação */}
-                                    <button type="button" onClick={handleSave}>EDITAR</button> {/* Botão para salvar os dados */}
+                                    <button type="button" onClick={handleSave}>SALVAR</button> {/* Botão para salvar os dados */}
+                                    <button type="button" onClick={handCancel}className={styles["button-cancelar"]}>CANCELAR</button>
                                 </div>
                             </form>
                         </div>

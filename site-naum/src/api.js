@@ -5,7 +5,7 @@ import axios from "axios";
 const api = axios.create({
     // Define a URL base para as requisições HTTP. Essa URL é obtida a partir de uma variável de ambiente,
     // o que torna o código mais seguro e flexível, já que a URL pode ser facilmente alterada sem necessidade de modificar o código.
-    baseURL: "https://662a666667df268010a3c38f.mockapi.io/barbearias/barbearias"
+    baseURL: "https://662a666667df268010a3c38f.mockapi.io/barbearias/"
 });
     
 // Exporta a instância criada para que possa ser utilizada em outras partes do projeto.
