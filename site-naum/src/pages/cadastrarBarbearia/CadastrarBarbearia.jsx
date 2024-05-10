@@ -1,10 +1,11 @@
-import api from "../../api"; // Importa a API para comunicação com o backend
+//import api from "../../api"; // Importa a API para comunicação com o backend
 import { toast } from "react-toastify"; // Importa toast para exibir mensagens de sucesso ou erro
 import React, { useState, useEffect } from "react"; // Importa React e o hook useState para gerenciamento de estado
 import styles from "./CadastrarBarbearia.module.css"; // Importa os estilos CSS para este componente
 import { useNavigate } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
 import NavBarLogin from "../../components/navbar/NavBarLogin"; // Importa o componente NavBar para a barra de navegação
 import { inputSomenteTexto } from "../../utils/globals"; // Import da função global
+import axios from "axios";
 
 function Adicionar() {
     const navigate = useNavigate(); // Inicializa o hook de navegação
@@ -54,29 +55,46 @@ function Adicionar() {
         };
     }, []);
 
+
+
     
 
     const handleSave = () => { // Função chamada ao clicar em salvar
-        const objetoAdicionado = { // Cria um objeto com os dados do formulário
-            nome,
-            linkBarbearia,
-            rua,
-            cidade,
-            bairro,
-            cep,
-            numero,
-            uf,
-            foto
-        };
 
-        // Faz uma requisição POST para a API
-        api.post(`barbearias`, objetoAdicionado).then(() => {
+
+        const options = {
+            method: 'POST',
+            url: 'http://localhost:8080/barbearias',
+            headers: {
+                'Content-Type': 'application/json',
+                'User-Agent': 'insomnia/8.6.1',
+                'Accept-Language': 'pt-br',
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            },
+            data: {
+                nome: nome,
+                linkBarbearia: linkBarbearia,
+                fotoBarbearia: foto,
+                endereco: {
+                    cidade: cidade,
+                    cep: cep,
+                    uf: uf,
+                    rua: rua,
+                    bairro: bairro,
+                    numero: numero
+                }
+            }
+        };
+    
+        axios.request(options).then(function (response) {
+            console.log(response.data);
             toast.success("Nova barbearia adicionado com sucesso!"); // Exibe uma mensagem de sucesso
-            sessionStorage.setItem("editado", JSON.stringify(objetoAdicionado)); // Armazena os dados na sessionStorage
+            sessionStorage.setItem("editado", JSON.stringify(response.data)); // Armazena os dados na sessionStorage
             navigate("/clientes"); // Redireciona para a página de músicas
-        }).catch(() => {
+        }).catch(function (error) {
+            console.error(error);
             toast.error("Ocorreu um erro ao salvar os dados, por favor, tente novamente."); // Exibe uma mensagem de erro se a requisição falhar
-        })
+        });
     };
 
     const handleInputChange = (event, setStateFunction) => { // Função para manipular as mudanças nos inputs
@@ -109,7 +127,7 @@ function Adicionar() {
 
                                 <div className={styles["inputs-junto"]}>
                                     <input type="text" value={numero} placeholder="Número" onChange={(e) => handleInputChange(e, setNumero)} />
-                                    <input type="text"maxLength={2} value={uf} placeholder="Uf" onChange={(e) => handleInputChange(e, setUf)} />
+                                    <input type="text" maxLength={2} value={uf} placeholder="Uf" onChange={(e) => handleInputChange(e, setUf)} />
                                 </div>
 
                                 <input type="text" value={foto} placeholder="foto" onChange={(e) => handleInputChange(e, setFoto)} />

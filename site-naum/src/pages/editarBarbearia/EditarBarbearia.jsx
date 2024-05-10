@@ -1,4 +1,4 @@
-import api from "../../api"; // Importa a API para comunicação com o backend
+//import api from "../../api"; // Importa a API para comunicação com o backend
 import { toast } from "react-toastify"; // Importa toast para exibir mensagens de sucesso ou erro
 import React, { useEffect, useState } from "react"; // Importa React e o hook useState para gerenciamento de estado
 import styles from "./EditarBarbearia.module.css"; // Importa os estilos CSS para este componente
@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom"; // Importa o hook use
 import NavBarLogin from "../../components/navbar/NavBarLogin"; // Importa o componente NavBar para a barra de navegação
 import { inputSomenteTexto } from "../../utils/globals"; // Import da função global
 //import imgNaum from "../../utils/assets/logos/NAUM.png";
+import axios from "axios";
 
 function Adicionar() {
     const navigate = useNavigate(); // Inicializa o hook de navegação
@@ -30,31 +31,58 @@ function Adicionar() {
     };
 
     const handleSave = async () => {
-        try {
-            await api.put(`barbearias/${id}`, {
-                nome,
-                linkBarbearia,
-                rua,
-                cidade,
-                bairro,
-                cep,
-                numero,
-                uf,
-                foto
-            });
-            toast.success('Dados editados com sucesso!');
-            navigate("/clientes");
-        } catch (error) {
-            toast.error('Ocorreu um erro ao salvar os dados. Por favor, tente novamente.');
-        }
+        const options = {
+            method: 'PUT',
+            url: `http://localhost:8080/barbearias/${id}`,
+            headers: {
+                'Content-Type': 'application/json',
+                'User-Agent': 'insomnia/8.6.1',
+                'Accept-Language': 'pt-br',
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            },
+            data: {
+                nome: nome,
+                linkBarbearia: linkBarbearia,
+                fotoBarbearia: foto,
+                endereco: {
+                    cidade: cidade,
+                    cep: cep,
+                    uf: uf,
+                    rua: rua,
+                    bairro: bairro,
+                    numero: numero
+                }
+            }
+        };
+    
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+            toast.success("Barbearia editada!"); // Exibe uma mensagem de sucesso
+            navigate("/clientes"); // Redireciona para a página de músicas
+        }).catch(function (error) {
+            console.error(error);
+            toast.error("Ocorreu um erro ao editar!"); // Exibe uma mensagem de erro se a requisição falhar
+        });
     };
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const response = await api.get(`barbearias/${id}`);
+
+
+            const options = {
+                method: 'GET',
+                url: `http://localhost:8080/barbearias/${id}`,
+                headers: {
+                  'User-Agent': 'insomnia/8.6.1',
+                  Authorization: `Bearer ${sessionStorage.getItem("token")}`
+                }
+              };
+              
+              axios.request(options).then(function (response) {
+                console.log(response.data);
                 const { data } = response;
-                const { nome, linkBarbearia, rua, cidade, bairro, cep, numero, uf, foto } = data;
+                const { nome, linkBarbearia, fotoBarbearia, endereco } = data;
+                const { rua, cidade, bairro, cep, numero, uf } = endereco;
                 setNome(nome);
                 setLinkBarbearia(linkBarbearia);
                 setRua(rua);
@@ -63,10 +91,10 @@ function Adicionar() {
                 setCep(cep);
                 setNumero(numero);
                 setUf(uf);
-                setFoto(foto);
-            } catch (error) {
-                console.log("Erro ao buscar os detalhes do barbeiro: ", error);
-            }
+                setFoto(fotoBarbearia);
+              }).catch(function (error) {
+                console.error(error);
+              });
         };
 
         fetchData();

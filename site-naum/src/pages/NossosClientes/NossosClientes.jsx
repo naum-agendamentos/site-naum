@@ -1,21 +1,33 @@
 // Importa as dependências necessárias, incluindo React, estilos específicos, componentes e a imagem do logotipo.
-import api from "../../api"; // Importa a instância da API para fazer chamadas HTTP
+//import api from "../../api"; // Importa a instância da API para fazer chamadas HTTP
 import styles from "./NossosClientes.module.css"; // Importa o arquivo de estilos CSS para este componente
 import React, { useState, useEffect } from "react"; // Importa React, useState e useEffect de 'react'
 import NavBar from "../../components/navbar/NavBarLogin"; // Importa o componente NavBar
 import CardParceiros from "../../components/cardParceiros/CardParceirosUD"; // Importa o componente CardParceiros
+import axios from "axios";
 
 const Parceiro = () => {
     const [cardsData, setCardsData] = useState();
 
+    
+
     function recuperarValorDoCard() {
-        api.get('barbearias').then((response) => {
+        const options = {
+            method: 'GET',
+            url: 'http://localhost:8080/barbearias',
+            headers: {
+              'User-Agent': 'insomnia/8.6.1',
+              Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            }
+          };
+          
+          axios.request(options).then(function (response) {
+            console.log(response.data);
             const { data } = response;
-            console.log(response)
             setCardsData(data)
-        }).catch(() => {
-            console.log("Deu erro, tente novamente!") // Caso haja um erro na requisição, exibe uma mensagem no console
-        })
+          }).catch(function (error) {
+            console.error(error);
+          });
     }
 
     /*
@@ -107,7 +119,7 @@ const Parceiro = () => {
                                 <div key={index}>
                                     <CardParceiros
                                         id={data.id}
-                                        foto={data.foto}
+                                        fotoBarbearia={data.fotoBarbearia}
                                         nome={data.nome}
                                     />
                                 </div>

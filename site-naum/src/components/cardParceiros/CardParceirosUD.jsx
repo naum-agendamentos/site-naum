@@ -4,16 +4,18 @@ import React from "react";
 import styles from "./CardParceirosUD.module.css";
 // Importa uma imagem padrão para ser usada caso nenhuma imagem específica seja fornecida
 import capaImg from "../../utils/assets/imagemParceiro.png";
-import api from "../../api";
+//import api from "../../api";
 import { toast } from "react-toastify";
 import Swal from 'sweetalert2';
+import axios from "axios";
+
 
 import { useNavigate } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
 
 // Define o componente CardMusica como uma função que recebe propriedades
 const CardParceiros = ({
     id,
-    foto,
+    fotoBarbearia,
     nome,
 }) => {
     const navigate = useNavigate(); // Inicializa o hook de navegação
@@ -22,6 +24,8 @@ const CardParceiros = ({
     const editar = (id) => {
         navigate(`/editar-barbearia/${id}`);
     };
+
+
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -34,21 +38,29 @@ const CardParceiros = ({
             cancelButtonText: "CANCELAR"
         }).then((result) => {
             if (result.isConfirmed) {
-
-                api.delete(`barbearias/${id}`)
-                    .then((response) => {
-
-                        console.log('Barbearia deletada!', response.data);
+                const options = {
+                    method: 'PUT',
+                    url: `http://localhost:8080/barbearias/desativar/${id}`,
+                    headers: {
+                      'User-Agent': 'insomnia/8.6.1',
+                      Authorization: `Bearer ${sessionStorage.getItem("token")}`
+                    }
+                  };
+                  
+                  axios.request(options).then(function (response) {
+                    console.log(response.data);
+                    console.log('Barbearia deletada!', response.data);
                         toast.success("Barbearia deletada!");
 
                         setTimeout(() => {
                             window.location.reload();
                         }, 2400);
-                    })
-                    .catch((error) => {
-                        console.error('Erro ao deletar Barbearia', error);
+                  }).catch(function (error) {
+                    console.error(error);
+                    console.error('Erro ao deletar Barbearia', error);
                         toast.error("Erro ao deletar Barbearia");
-                    });
+                  });
+
             }
         });
     }
@@ -60,7 +72,7 @@ return (
         {/* Contêiner para a imagem */}
         <div className={styles["imagem-container"]}>
             {/* Exibe a imagem da música; usa imagemSrc se fornecido, caso contrário usa capaImg */}
-            <img src={foto ? foto : capaImg} alt="Imagem"
+            <img src={fotoBarbearia ? fotoBarbearia : capaImg} alt="Imagem"
                 className={styles["imagem"]} />
             {/* Contêiner para os botões */}
             <div className={styles["texto"]}>
