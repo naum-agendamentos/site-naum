@@ -6,6 +6,7 @@ const NavBar = () => {
     const navigate = useNavigate(); // Inicializa o hook de navegação
 
     const home = () => { // Função chamada ao clicar em cancelar
+        sessionStorage.clear();
         navigate("/"); // Redireciona para a página de músicas
     };
 
