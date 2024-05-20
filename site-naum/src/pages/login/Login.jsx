@@ -16,29 +16,51 @@ const LoginPage = () => {
         setStateFunction(event.target.value);
     }
 
+    const [inputValidEmail, setInputValidEmail] = useState("input-form");
+
+    const [inputValidSenha, setInputValidSenha] = useState("input-form");
+
     const login = () => {
-        api.post("usuarios/login", {
-            email,
-            senha
-        }).then((response) => {
-            const { data } = response;
-            const { userId, token, tipo } = data;
 
-
-
-            if (tipo === "ADMIN") {
-                sessionStorage.setItem('token', token)
-                sessionStorage.setItem('userId', userId)
-                navigate("/clientes");
+        if (email === "" || senha === "") {
+            toast.error("Preencha todos os campos");
+            if (email === "") {
+                setInputValidEmail("input-error");
+            } else {
+                setInputValidEmail("input-form");
             }
-            else {
-                toast.error("Acesso negado!");
+            if (senha === "") {
+                setInputValidSenha("input-error");
+            } else {
+                setInputValidSenha("input-form");
             }
+        } else {
+            setInputValidEmail("input-form");
+            setInputValidSenha("input-form");
+
+            api.post("usuarios/login", {
+                email,
+                senha
+            }).then((response) => {
+                const { data } = response;
+                const { userId, token, tipo } = data;
 
 
-        }).catch(() => {
-            toast.error("Email ou senha inválidos!");
-        })
+
+                if (tipo === "ADMIN") {
+                    sessionStorage.setItem('token', token)
+                    sessionStorage.setItem('userId', userId)
+                    navigate("/clientes");
+                }
+                else {
+                    toast.error("Acesso negado!");
+                }
+
+
+            }).catch(() => {
+                toast.error("Email ou senha inválidos!");
+            })
+        }
     }
 
     return (
@@ -51,11 +73,11 @@ const LoginPage = () => {
                         <div className={style["banner"]}>
                             <div className={style["validarconta"]}><br />
                                 <h1> LOGIN</h1>
-                                <p>EMAIL</p><input id={style["input_email"]} placeholder="EMAIL" onChange={(e) => handleInputChange(e, setEmail)} />
-                                <p>SENHA</p><input id={style["input_senha"]} placeholder="SENHA" type="password" onChange={(e) => handleInputChange(e, setSenha)} /><br />
+                                <p>EMAIL</p><input className={style[inputValidEmail]} placeholder="EMAIL" onChange={(e) => handleInputChange(e, setEmail)} />
+                                <p>SENHA</p><input className={style[inputValidSenha]} placeholder="SENHA" type="password" onChange={(e) => handleInputChange(e, setSenha)} /><br />
                                 <button type="button" onClick={login}>ENTRAR</button>
                             </div>
-                            <div id={style["pg_login"]}></div>
+                            <div className={style["pg_login"]}></div>
                         </div>
                     </div>
                 </div>
