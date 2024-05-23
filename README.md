@@ -1,17 +1,17 @@
 
-# Naum.
+# NA.UM.
 
-Este repositório contém o site institucional da Naum.
+Este repositório contém o site institucional da NA.UM.
 
-A Naum tem como missão desenvolver um sistema de gestão para barbearias, com o objetivo de facilitar o agendamento de serviços entre os clientes e os barbeiros, promovendo uma interação com tempo otimizado para ambas as partes. 
+A NA.UM tem como missão desenvolver um sistema de gestão para barbearias, com o objetivo de facilitar o agendamento de serviços entre os clientes e os barbeiros, promovendo uma interação com tempo otimizado para ambas as partes. 
 
 ## 👨🏽‍💻 Desenvolvido por:
-  - Bryan da Silva | @BryanSilva117
-  - Davi Maciel | @Davi-Britto
-  - Diego Hessel | @DiegoHessel
-  - Erick Roberto Ribeiro | @Eggberto0
-  - Guilherme de Lima | @GuilhermeDeLimaDev
-  - Guilherme Alves | @oguilhermealves2
+  - [@BryanSilva117](https://github.com/BryanSilva117)
+  - [@Davi-Britto](https://github.com/Davi-Britto)
+  - [@DiegoHessel](https://github.com/DiegoHessel)
+  - [@Eggberto0](https://github.com/Eggberto0)
+  - [@Guilherme-Lima-Moura](https://github.com/Guilherme-Lima-Moura)
+  - [@oguilhermealves2](https://github.com/oguilhermealves2)
 
 #
 
