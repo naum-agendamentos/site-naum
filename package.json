@@ -1,0 +1,9 @@
+{
+  "name": "na.um",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./site-naum/src/App.js",
+    "postinstall": "cd site-naum && npm install"
+  }
+}
