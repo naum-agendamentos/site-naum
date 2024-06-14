@@ -1,9 +1,7 @@
-
 import React, { useState } from "react";
 import style from './EditarLogin.module.css';
 import NavBar from './../../components/navbar/NavBarLogin';
 import { useNavigate } from "react-router-dom";
-//import api from "../../api";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -31,7 +29,7 @@ const EditarLogin = () => {
         const regexEmail = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
         if (!value.match(regexEmail)) {
-            toast.warn("Digite um email válido")
+            toast.warn("Digite um email válido");
             setInputValidEmail("input-error");
         } else {
             setInputValidEmail("input-form");
@@ -42,7 +40,7 @@ const EditarLogin = () => {
         const value = event.target.value;
 
         if (value.length < 6) {
-            toast.warn("A senha deve conter no mínimo 6 dígitos")
+            toast.warn("A senha deve conter no mínimo 6 dígitos");
             setInputValidSenha("input-error");
         } else {
             setInputValidSenha("input-form");
@@ -53,7 +51,7 @@ const EditarLogin = () => {
         const value = event.target.value;
 
         if (value !== senha) {
-            toast.warn("As senhas não coincidem")
+            toast.warn("As senhas não coincidem");
             setInputValidConfSenha("input-error");
         } else {
             setInputValidConfSenha("input-form");
@@ -61,15 +59,19 @@ const EditarLogin = () => {
     }
 
     const validateFields = () => {
-        return !(
-            email && senha && confirmSenha
-        );
+        if (!email || !senha || !confirmSenha) {
+            toast.warn("Preencha todos os campos corretamente.");
+            return false;
+        }
+        if (senha !== confirmSenha) {
+            toast.warn("As senhas não coincidem.");
+            return false;
+        }
+        return true;
     };
 
     const editarLogin = () => {
-
-        if (validateFields) {
-
+        if (validateFields()) {
             const options = {
                 method: 'PUT',
                 url: `http://localhost:8080/login-adm`,
@@ -87,20 +89,18 @@ const EditarLogin = () => {
 
             axios.request(options).then(function (response) {
                 console.log(response.data);
-                toast.success("Login editado!"); // Exibe uma mensagem de sucesso
-                navigate("/login"); // Redireciona para a página de músicas
+                toast.success("Login editado!"); 
+                navigate("/login"); 
                 sessionStorage.clear();
             }).catch(function (error) {
                 console.error(error);
-                toast.error("Ocorreu um erro ao editar!"); // Exibe uma mensagem de erro se a requisição falhar
+                toast.error("Ocorreu um erro ao editar!");
             });
-        } else {
-            toast.warn("Preencha todos os campos corretamente.");
         }
     }
 
     return (
-        // Fragmento React para agrupar múltiplos elementos sem adicionar um nó extra ao DOM
+       
         <>
             <NavBar />
             <div className={style["banner"]}>
@@ -119,5 +119,5 @@ const EditarLogin = () => {
         </>
     );
 };
-// Exporta o componente Home para que possa ser usado em outras partes da aplicação
+
 export default EditarLogin;

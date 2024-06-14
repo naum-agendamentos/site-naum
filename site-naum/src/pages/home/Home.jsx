@@ -1,12 +1,12 @@
-import api from "../../api"; // Importa a instância da API para fazer chamadas HTTP
+import api from "../../api"; 
 import style from './Home.module.css';
 import NavBar from './../../components/navbar/NavBar';
 import Footer from "../../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react"; // Importa React, useState e useEffect de 'react'
-import CardParceiros from "../../components/cardParceiros/CardParceiros"; // Importa o componente CardParceiros
+import React, { useState, useEffect } from "react"; 
+import CardParceiros from "../../components/cardParceiros/CardParceiros"; 
 
-//imagens sobre nos
+
 import agenda from '../../utils/assets/agendaServicos.png';
 import estrela from '../../utils/assets/estrelaServicos.png';
 import graficos from '../../utils/assets/graficosServicos.png';
@@ -14,9 +14,7 @@ import sinos from '../../utils/assets/sinoServicos.png';
 import tela from '../../utils/assets/telaServicos.png';
 import barbeiro from '../../utils/assets/barbeiroServicos.png';
 
-//imagens parceiros
 
-//imagens contratar
 import contratar from '../../utils/assets/contratar.png';
 
 
@@ -26,10 +24,10 @@ const HomePage = () => {
 
 
 
-    const navigate = useNavigate(); // Inicializa o hook de navegação
+    const navigate = useNavigate(); 
 
-    const nossosParceiros = () => { // Função chamada ao clicar em cancelar
-        navigate("/parceiros"); // Redireciona para a página de músicas
+    const nossosParceiros = () => { 
+        navigate("/parceiros"); 
     };
 
     const [cardsData, setCardsData] = useState();
@@ -40,7 +38,7 @@ const HomePage = () => {
             console.log(response)
             setCardsData(data)
         }).catch(() => {
-            console.log("Deu erro, tente novamente!") // Caso haja um erro na requisição, exibe uma mensagem no console
+            console.log("Deu erro, tente novamente!") 
         })
     }
 
@@ -49,7 +47,7 @@ const HomePage = () => {
     }, [])
 
     return (
-        // Fragmento React para agrupar múltiplos elementos sem adicionar um nó extra ao DOM
+       
         <>
 
 
@@ -171,33 +169,12 @@ const HomePage = () => {
                                 {cardsData && cardsData.slice(0, 3).map((data, index) => (
                                     <div key={index}>
                                         <CardParceiros
-                                            foto={data.foto}
+                                            foto={data.fotoBarbearia}
                                         />
                                     </div>
                                 ))}
                             
                     </div>
-
-                    {/* <div className={style["cards-parceiros"]}>
-                                <div className={style["parceiros-info"]}>
-                                    <div>
-                                        <img src={parceiro} alt="parceiro" />
-                                    </div>
-
-                                </div>
-                                <div className={style["parceiros-info"]}>
-                                    <div>
-                                        <img src={parceiro} alt="parceiro" />
-                                    </div>
-                                </div>
-
-                                <div className={style["parceiros-info"]}>
-                                    <div>
-                                        <img src={parceiro} alt="parceiro" />
-                                    </div>
-                                </div>
-
-                            </div> */}
                 </section>
 
                 <section className={style["contratar"]}>
@@ -225,5 +202,5 @@ const HomePage = () => {
         </>
     );
 };
-// Exporta o componente Home para que possa ser usado em outras partes da aplicação
+
 export default HomePage;

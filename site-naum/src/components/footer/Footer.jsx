@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Footer.module.css';
 import { useNavigate } from "react-router-dom";
 
-//imagens footer
+
 import logoNaum from '../../utils/assets/logos/NAUM.png';
 import instagram from '../../utils/assets/InstagramLogo.png';
 import gitHub from '../../utils/assets/GithubLogo.png';
@@ -11,8 +11,8 @@ import seta from '../../utils/assets/arrow-climb-up.png';
 
 const Footer = () => {
     const navigate = useNavigate();
-    const login = () => { // Função chamada ao clicar em cancelar
-        navigate("/login"); // Redireciona para a página de músicas
+    const login = () => { 
+        navigate("/login"); 
     };
 
     return (

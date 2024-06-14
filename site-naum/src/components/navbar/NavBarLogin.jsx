@@ -1,24 +1,25 @@
 import React from 'react';
 import styles from './NavbarLogin.module.css';
-import { useNavigate } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
+import { useNavigate } from "react-router-dom"; 
 const NavbarLogin = () => {
 
-    const navigate = useNavigate(); // Inicializa o hook de navegação
+    const navigate = useNavigate(); 
 
-    const listaBarb = () => { // Função chamada ao clicar em cancelar
-        navigate("/clientes"); // Redireciona para a página de músicas
+    const listaBarb = () => { 
+        navigate("/clientes"); 
     };
 
-    const home = () => { // Função chamada ao clicar em cancelar
-        navigate("/"); // Redireciona para a página de músicas
+    const home = () => { 
+        navigate("/"); 
+        sessionStorage.clear()
     };
 
-    const cadastrarBarb = () => { // Função chamada ao clicar em cancelar
-        navigate("/cadastrar"); // Redireciona para a página de músicas
+    const cadastrarBarb = () => { 
+        navigate("/cadastrar"); 
     };
 
-    const editarLogin = () => { // Função chamada ao clicar em cancelar
-        navigate("/editar-login"); // Redireciona para a página de músicas
+    const editarLogin = () => { 
+        navigate("/editar-login"); 
     };
 
     return (

@@ -1,10 +1,10 @@
-//import api from "../../api"; // Importa a API para comunicação com o backend
-import { toast } from "react-toastify"; // Importa toast para exibir mensagens de sucesso ou erro
-import React, { useEffect, useState } from "react"; // Importa React e o hook useState para gerenciamento de estado
-import styles from "./EditarBarbearia.module.css"; // Importa os estilos CSS para este componente
-import { useNavigate, useParams } from "react-router-dom"; // Importa o hook useNavigate para redirecionamento de rotas
-import NavBarLogin from "../../components/navbar/NavBarLogin"; // Importa o componente NavBar para a barra de navegação
-import { inputSomenteTexto } from "../../utils/globals"; // Import da função global
+
+import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
+import styles from "./EditarBarbearia.module.css"; 
+import { useNavigate, useParams } from "react-router-dom"; 
+import NavBarLogin from "../../components/navbar/NavBarLogin"; 
+import { inputSomenteTexto } from "../../utils/globals"; 
 //import imgNaum from "../../utils/assets/logos/NAUM.png";
 import axios from "axios";
 
@@ -26,7 +26,7 @@ function Adicionar() {
         setStateFunction(event.target.value);
     };
 
-    const handCancel = () => { // Função chamada ao clicar em cancelar
+    const handCancel = () => { 
         navigate("/clientes"); 
     };
 
@@ -202,11 +202,11 @@ function Adicionar() {
     
         axios.request(options).then(function (response) {
             console.log(response.data);
-            toast.success("Barbearia editada!"); // Exibe uma mensagem de sucesso
-            navigate("/clientes"); // Redireciona para a página de músicas
+            toast.success("Barbearia editada!");
+            navigate("/clientes");
         }).catch(function (error) {
             console.error(error);
-            toast.error("Ocorreu um erro ao editar!"); // Exibe uma mensagem de erro se a requisição falhar
+            toast.error("Ocorreu um erro ao editar!"); 
         });
     } else {
         toast.warn("Preencha todos os campos corretamente.");
@@ -265,7 +265,7 @@ function Adicionar() {
                             setBairro(data.bairro);
                             setUf(data.uf);
 
-                            toast.success("Endereço encontrado"); // Exibe uma mensagem de sucesso
+                            toast.success("Endereço encontrado"); 
                         } else {
                             toast.error("CEP não encontrado")
                         }
@@ -292,14 +292,13 @@ function Adicionar() {
         <>
             <div class="borda-gradiente-left">
                 <div class="borda-gradiente-right">
-                    <NavBarLogin /> {/* Componente NavBar com logo */}
+                    <NavBarLogin />
 
-                    <div className={styles["container-adicionar"]}> {/* Container principal para o formulário */}
-                        <div className={styles["secao-esquerda-adicionar"]}> {/* Seção esquerda contendo o formulário */}
-                            <h1>EDITAR BARBEARIA</h1> {/* Título do formulário */}
+                    <div className={styles["container-adicionar"]}> 
+                        <div className={styles["secao-esquerda-adicionar"]}> 
+                            <h1>EDITAR BARBEARIA</h1> 
                             <form>
-                                {/* Inputs para cada campo do formulário */}
-                                {/* Chamar a função importada no onInput */}
+                              
                                 <input type="text" className={styles[inputValidNomeBarb]} onInput={inputSomenteTexto} value={nome} onBlur={handleNomeBarbBlur} placeholder="Nome da Barbearia" onChange={(e) => handleInputChange(e, setNome)} />
                                 <input type="text" className={styles[inputValidLink]} value={linkBarbearia} onBlur={handleLinkBlur} placeholder="Link da Barbearia" onChange={(e) => handleInputChange(e, setLinkBarbearia)} />
                                 <input type="text" className={styles[inputValidCep]} maxLength={8} id="IptCep" value={cep} onBlur={handleCepBlur} placeholder="CEP" onChange={(e) => handleInputChange(e, setCep)} />
@@ -314,8 +313,8 @@ function Adicionar() {
 
                                 <input type="text" className={styles[inputValidFoto]} value={foto} onBlur={handleFotoBlur} placeholder="foto" onChange={(e) => handleInputChange(e, setFoto)} />
                                 <br />
-                                <div className={styles["buttons-container"]}> {/* Container para os botões de ação */}
-                                    <button type="button" onClick={handleSave}>SALVAR</button> {/* Botão para salvar os dados */}
+                                <div className={styles["buttons-container"]}> 
+                                    <button type="button" onClick={handleSave}>SALVAR</button>
                                     <button type="button" onClick={handCancel}className={styles["button-cancelar"]}>CANCELAR</button>
                                 </div>
                             </form>
@@ -327,4 +326,4 @@ function Adicionar() {
         </>
     );
 }
-export default Adicionar; // Exporta o componente Adicionar
+export default Adicionar; 

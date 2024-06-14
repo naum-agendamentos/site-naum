@@ -64,7 +64,7 @@ const LoginPage = () => {
     }
 
     return (
-        // Fragmento React para agrupar múltiplos elementos sem adicionar um nó extra ao DOM
+      
         <>
             <div class="borda-gradiente-left">
                 <div class="borda-gradiente-right">
@@ -86,5 +86,5 @@ const LoginPage = () => {
         </>
     );
 };
-// Exporta o componente Home para que possa ser usado em outras partes da aplicação
+
 export default LoginPage;
