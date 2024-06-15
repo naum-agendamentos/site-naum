@@ -220,7 +220,7 @@ function Adicionar() {
         } else {
             const options = {
                 method: 'POST',
-                url: 'http://localhost:8080/barbearias',
+                url: 'https://api-rest-naum.azurewebsites.net/barbearias',
                 headers: {
                     'Content-Type': 'application/json',
                     'User-Agent': 'insomnia/8.6.1',

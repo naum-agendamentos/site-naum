@@ -178,7 +178,7 @@ function Adicionar() {
 
         const options = {
             method: 'PUT',
-            url: `http://localhost:8080/barbearias/${id}`,
+            url: `https://api-rest-naum.azurewebsites.net/barbearias/${id}`,
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': 'insomnia/8.6.1',
@@ -219,7 +219,7 @@ function Adicionar() {
 
             const options = {
                 method: 'GET',
-                url: `http://localhost:8080/barbearias/${id}`,
+                url: `https://api-rest-naum.azurewebsites.net/barbearias/${id}`,
                 headers: {
                   'User-Agent': 'insomnia/8.6.1',
                   Authorization: `Bearer ${sessionStorage.getItem("token")}`
