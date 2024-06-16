@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import React, { useEffect, useState } from "react";
 import styles from "./EditarBarbearia.module.css"; 
 import { useNavigate, useParams } from "react-router-dom"; 
-import NavBarLogin from "../../components/navbar/NavBarLogin"; 
+import NavBarLogin from "../../components/navbarLogin/NavBarLogin"; 
 import { inputSomenteTexto } from "../../utils/globals"; 
 //import imgNaum from "../../utils/assets/logos/NAUM.png";
 import axios from "axios";
@@ -178,7 +178,7 @@ function Adicionar() {
 
         const options = {
             method: 'PUT',
-            url: `http://localhost:8080/barbearias/${id}`,
+            url: `https://api-rest-naum.azurewebsites.net/barbearias/${id}`,
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': 'insomnia/8.6.1',
@@ -219,7 +219,7 @@ function Adicionar() {
 
             const options = {
                 method: 'GET',
-                url: `http://localhost:8080/barbearias/${id}`,
+                url: `https://api-rest-naum.azurewebsites.net/barbearias/${id}`,
                 headers: {
                   'User-Agent': 'insomnia/8.6.1',
                   Authorization: `Bearer ${sessionStorage.getItem("token")}`

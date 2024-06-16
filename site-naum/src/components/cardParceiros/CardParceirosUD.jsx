@@ -40,7 +40,7 @@ const CardParceiros = ({
             if (result.isConfirmed) {
                 const options = {
                     method: 'PUT',
-                    url: `http://localhost:8080/barbearias/desativar/${id}`,
+                    url: `https://api-rest-naum.azurewebsites.net/barbearias/desativar/${id}`,
                     headers: {
                       'User-Agent': 'insomnia/8.6.1',
                       Authorization: `Bearer ${sessionStorage.getItem("token")}`

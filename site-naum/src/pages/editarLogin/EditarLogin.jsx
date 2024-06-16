@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import style from './EditarLogin.module.css';
-import NavBar from './../../components/navbar/NavBarLogin';
+import NavBar from './../../components/navbarLogin/NavBarLogin';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -74,7 +74,7 @@ const EditarLogin = () => {
         if (validateFields()) {
             const options = {
                 method: 'PUT',
-                url: `http://localhost:8080/login-adm`,
+                url: `https://api-rest-naum.azurewebsites.net/login-adm`,
                 headers: {
                     'Content-Type': 'application/json',
                     'User-Agent': 'insomnia/8.6.1',

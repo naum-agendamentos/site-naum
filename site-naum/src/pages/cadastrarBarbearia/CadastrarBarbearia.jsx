@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import React, { useState, useEffect } from "react"; 
 import styles from "./CadastrarBarbearia.module.css"; 
 import { useNavigate } from "react-router-dom";
-import NavBarLogin from "../../components/navbar/NavBarLogin"; 
+import NavBarLogin from "../../components/navbarLogin/NavBarLogin"; 
 import { inputSomenteTexto } from "../../utils/globals"; 
 import axios from "axios";
 
@@ -220,7 +220,7 @@ function Adicionar() {
         } else {
             const options = {
                 method: 'POST',
-                url: 'http://localhost:8080/barbearias',
+                url: 'https://api-rest-naum.azurewebsites.net/barbearias',
                 headers: {
                     'Content-Type': 'application/json',
                     'User-Agent': 'insomnia/8.6.1',

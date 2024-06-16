@@ -1,7 +1,7 @@
 
 import styles from "./NossosClientes.module.css"; 
 import React, { useState, useEffect } from "react"; 
-import NavBar from "../../components/navbar/NavBarLogin";
+import NavBar from "../../components/navbarLogin/NavBarLogin";
 import CardParceiros from "../../components/cardParceiros/CardParceirosUD"; 
 import axios from "axios";
 
@@ -13,7 +13,7 @@ const Parceiro = () => {
     function recuperarValorDoCard() {
         const options = {
             method: 'GET',
-            url: 'http://localhost:8080/barbearias',
+            url: 'https://api-rest-naum.azurewebsites.net/barbearias',
             headers: {
               'User-Agent': 'insomnia/8.6.1',
               Authorization: `Bearer ${sessionStorage.getItem("token")}`

@@ -4,9 +4,9 @@ import styles from "./Parceiro.module.css";
 import React, { useState, useEffect } from "react"; 
 import NavBar from "../../components/navbar/NavBar"; 
 import CardParceiros from "../../components/cardParceiros/CardParceiros"; 
-import StarVazia from "../../utils/assets/StarVazia.png";
-import StarCheia from "../../utils/assets/StarCheia.png";
-import Menu from "../../utils/assets/MenuRounded.png";
+//import StarVazia from "../../utils/assets/StarVazia.png";
+//import StarCheia from "../../utils/assets/StarCheia.png";
+//import Menu from "../../utils/assets/MenuRounded.png";
 import Footer from "../../components/footer/Footer";
 
 const Parceiro = () => {
@@ -29,27 +29,27 @@ const Parceiro = () => {
     }, []) 
 
 
-    function ativarStars() {
-        var ativarEstrelas = document.getElementById('ativarE');
-        if (ativarEstrelas.style.visibility === 'hidden') {
-            ativarEstrelas.style.visibility = 'visible';
-        } else {
-            ativarEstrelas.style.visibility = 'hidden';
-        }
-    }
+    // function ativarStars() {
+    //     var ativarEstrelas = document.getElementById('ativarE');
+    //     if (ativarEstrelas.style.visibility === 'hidden') {
+    //         ativarEstrelas.style.visibility = 'visible';
+    //     } else {
+    //         ativarEstrelas.style.visibility = 'hidden';
+    //     }
+    // }
 
-    function mudarEstrela(numero) {
-        var estrelas = document.querySelectorAll('.stars img');
-        for (var i = 0; i < estrelas.length; i++) {
-            if (i < numero) {
-                estrelas[i].src = StarCheia;
-                estrelas[i].style.transform = 'scale(1.10)';
-            } else {
-                estrelas[i].src = StarVazia;
-                estrelas[i].style.transform = 'scale(1)';
-            }
-        }
-    }
+    // function mudarEstrela(numero) {
+    //     var estrelas = document.querySelectorAll('.stars img');
+    //     for (var i = 0; i < estrelas.length; i++) {
+    //         if (i < numero) {
+    //             estrelas[i].src = StarCheia;
+    //             estrelas[i].style.transform = 'scale(1.10)';
+    //         } else {
+    //             estrelas[i].src = StarVazia;
+    //             estrelas[i].style.transform = 'scale(1)';
+    //         }
+    //     }
+    // }
 
 
     return (
