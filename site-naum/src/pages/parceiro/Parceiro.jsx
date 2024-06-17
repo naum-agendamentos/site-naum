@@ -87,6 +87,7 @@ const Parceiro = () => {
                                 <div key={index}>
                                     <CardParceiros
                                         foto={data.fotoBarbearia}
+                                        linkBarbearia={data.linkBarbearia}
                                     />
                                 </div>
                             ))}

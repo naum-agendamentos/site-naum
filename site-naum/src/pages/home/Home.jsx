@@ -35,7 +35,7 @@ const HomePage = () => {
     function recuperarValorDoCard() {
         api.get('barbearias').then((response) => {
             const { data } = response;
-            console.log(response)
+            console.log(response.data)
             setCardsData(data)
         }).catch(() => {
             console.log("Deu erro, tente novamente!") 
@@ -168,8 +168,9 @@ const HomePage = () => {
                             <div className={style["content-parceiros"]}>
                                 {cardsData && cardsData.slice(0, 3).map((data, index) => (
                                     <div key={index}>
-                                        <CardParceiros
+                                        <CardParceiros 
                                             foto={data.fotoBarbearia}
+                                            linkBarbearia={data.linkBarbearia}
                                         />
                                     </div>
                                 ))}

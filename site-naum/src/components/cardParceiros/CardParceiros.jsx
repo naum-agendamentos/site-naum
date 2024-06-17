@@ -8,9 +8,10 @@ import capaImg from "../../utils/assets/imagemParceiro.png";
 
 const CardParceiros = ({
      foto,
+     linkBarbearia
 }) => {
     return (
-   
+        <a href={linkBarbearia} target="_blank" rel="noopener noreferrer" className={styles["link"]}>
         <div>
         
             <div className={styles["imagem-container"]}>
@@ -19,6 +20,7 @@ const CardParceiros = ({
                     className={styles["imagem"]} />
             </div>
         </div>
+        </a>
     );
 };
 
