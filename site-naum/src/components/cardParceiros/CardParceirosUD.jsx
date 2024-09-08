@@ -5,6 +5,8 @@ import styles from "./CardParceirosUD.module.css";
 
 import capaImg from "../../utils/assets/imagemParceiro.png";
 
+import api from "../../api";
+
 import { toast } from "react-toastify";
 import Swal from 'sweetalert2';
 import axios from "axios";
@@ -40,14 +42,14 @@ const CardParceiros = ({
             if (result.isConfirmed) {
                 const options = {
                     method: 'PUT',
-                    url: `https://api-rest-naum.azurewebsites.net/barbearias/desativar/${id}`,
+                    url: `barbearias/desativar/${id}`,
                     headers: {
                       'User-Agent': 'insomnia/8.6.1',
                       Authorization: `Bearer ${sessionStorage.getItem("token")}`
                     }
                   };
                   
-                  axios.request(options).then(function (response) {
+                  api.request(options).then(function (response) {
                     console.log(response.data);
                     console.log('Barbearia deletada!', response.data);
                         toast.success("Barbearia deletada!");

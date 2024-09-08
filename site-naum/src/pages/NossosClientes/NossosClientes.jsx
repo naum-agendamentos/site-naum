@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../../components/navbarLogin/NavBarLogin";
 import CardParceiros from "../../components/cardParceiros/CardParceirosUD"; 
 import axios from "axios";
+import api from "../../api";
 
 const Parceiro = () => {
     const [cardsData, setCardsData] = useState();
@@ -13,14 +14,14 @@ const Parceiro = () => {
     function recuperarValorDoCard() {
         const options = {
             method: 'GET',
-            url: 'https://api-rest-naum.azurewebsites.net/barbearias',
+            url: `barbearias`,
             headers: {
               'User-Agent': 'insomnia/8.6.1',
               Authorization: `Bearer ${sessionStorage.getItem("token")}`
             }
           };
           
-          axios.request(options).then(function (response) {
+          api.request(options).then(function (response) {
             console.log(response.data);
             const { data } = response;
             setCardsData(data)

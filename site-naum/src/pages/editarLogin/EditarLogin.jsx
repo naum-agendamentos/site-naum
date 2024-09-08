@@ -4,6 +4,7 @@ import NavBar from './../../components/navbarLogin/NavBarLogin';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import api from "../../api";
 
 const EditarLogin = () => {
 
@@ -74,7 +75,7 @@ const EditarLogin = () => {
         if (validateFields()) {
             const options = {
                 method: 'PUT',
-                url: `https://api-rest-naum.azurewebsites.net/login-adm`,
+                url: `login-adm`,
                 headers: {
                     'Content-Type': 'application/json',
                     'User-Agent': 'insomnia/8.6.1',
@@ -87,7 +88,7 @@ const EditarLogin = () => {
                 }
             };
 
-            axios.request(options).then(function (response) {
+            api.request(options).then(function (response) {
                 console.log(response.data);
                 toast.success("Login editado!"); 
                 navigate("/login"); 
