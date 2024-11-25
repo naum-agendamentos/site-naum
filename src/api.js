@@ -1,9 +1,9 @@
-// Importa a biblioteca Axios.
+// Importa a biblioteca Axios
 import axios from "axios";
 
 // Cria uma instância do Axios com configurações personalizadas.
 const api = axios.create({
-    baseURL: "http://44.209.54.84/"  // Endereço IP público do EC2 público
+    baseURL: process.env.REACT_APP_API_URL || "http://localhost/"  // Fallback para localhost se a variável não for definida
 });
 
 // Exporta a instância criada para que possa ser utilizada em outras partes do projeto.
